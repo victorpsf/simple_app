@@ -21,7 +21,7 @@ namespace RecorteDeCoração.Controller
 
         public void CreateProduto(Produto produto)
         {
-            string errorQuery = null; 
+            Exception err = null;
             //int arquivoId;
 
             try {
@@ -29,13 +29,7 @@ namespace RecorteDeCoração.Controller
             }
             
             catch(MySqlException error) {
-                LogController.WriteException(error);
-                MessageBox.Show("Falha ao abrir conexão com banco de dados!\n\n" + error.Message,
-                    "Falha ao iniciar conexão",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
-                return;
+                throw new Exception("Falha ao abrir conexão com banco de dados!\n\n" + error.Message, error.InnerException);
             }
 
             if (produto.Imagem != null) {
@@ -53,36 +47,29 @@ namespace RecorteDeCoração.Controller
             }
 
             catch (MySqlException error) {
-                LogController.WriteException(error);
-                errorQuery = error.Message;
+                err = error;
             } 
 
             finally {
                 this.dbConnection.Close();
             }
 
-            if (errorQuery != null) {
-                MessageBox.Show("Error ao tentar salvar registro\n\n" + errorQuery, "Erro ao salvar registro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (err != null) {
+                throw new Exception("Error ao tentar salvar registro\n\n" + err.Message, err.InnerException);
             }
         }
 
         public List<Produto> ListProduto()
         {
             List<Produto> produtos = new List<Produto>();
-            string errorQuery = null;
+            Exception err = null;
 
             try {
                 this.dbConnection.Open();
             } 
 
             catch (MySqlException error) {
-                LogController.WriteException(error);
-                MessageBox.Show("Falha ao abrir conexão com banco de dados!\n\n" + error.Message,
-                    "Falha ao iniciar conexão",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
-                return null;
+                throw new Exception("Falha ao abrir conexão com banco de dados!\n\n" + error.Message, error.InnerException);
             }
 
             try {
@@ -100,17 +87,15 @@ namespace RecorteDeCoração.Controller
             } 
 
             catch (MySqlException error) {
-                LogController.WriteException(error);
-                errorQuery = error.Message;
+                err = error;
             }
 
             finally {
                 this.dbConnection.Close();
             }
 
-            if (errorQuery != null) {
-                MessageBox.Show("Não foi possível obter registros\n\n" + errorQuery, "Erro ao obter registro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
+            if (err != null) {
+                throw new Exception("Não foi possível obter registros\n\n" + err.Message, err.InnerException);
             }
 
             return produtos;

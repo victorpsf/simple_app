@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using RecorteDeCoração.Model;
 using RecorteDeCoração.connection;
-using System.Data.SqlClient;
 using System.Windows.Forms;
 
-using System.Data;
 using MySql.Data.MySqlClient;
 
 namespace RecorteDeCoração.Controller
@@ -20,15 +15,14 @@ namespace RecorteDeCoração.Controller
 
         public void CreateCliente(Cliente cliente)
         {
-            string errorQuery = null;
+            Exception err = null;
 
             try {
                 this.dbconnection.Open();
             } 
 
             catch (MySqlException error) {
-                MessageBox.Show(error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                throw new Exception("Falha ao abrir conexão com banco de dados!\n\n" + error.Message, error.InnerException);
             }
 
             MySqlParameter paramNome = new MySqlParameter("@Nome", cliente.Nome);
@@ -43,30 +37,24 @@ namespace RecorteDeCoração.Controller
                 );
             } 
 
-            catch (MySqlException error) {
-                errorQuery = error.Message;
-            } 
+            catch (MySqlException error) { err = error; } 
+            finally                      { this.dbconnection.Close(); }
 
-            finally {
-                this.dbconnection.Close();
-            }
-
-            if (errorQuery != null) {
-                MessageBox.Show(errorQuery, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (err != null) {
+                throw new Exception("Error ao tentar salvar registro\n\n" + err.Message, err.InnerException);
             }
         }
 
         public void UpdateCliente(Cliente cliente)
         {
-            string errorQuery = null;
+            Exception err = null;
 
             try {
                 this.dbconnection.Open();
             }
 
             catch (MySqlException error) {
-                MessageBox.Show(error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                throw new Exception("Falha ao abrir conexão com banco de dados!\n\n" + error.Message, error.InnerException);
             }
 
             MySqlParameter paramId = new MySqlParameter("@Id", cliente.Id);
@@ -80,23 +68,24 @@ namespace RecorteDeCoração.Controller
                     paramNome, paramEmail, paramTelefone, paramId
                 );
             }
-            catch (MySqlException error) { errorQuery = error.Message; }
+            catch (MySqlException error) { err = error; }
             finally                      { this.dbconnection.Close(); }
 
-            if (errorQuery != null) { MessageBox.Show(errorQuery, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            if (err != null) {
+                throw new Exception("Error ao tentar atualizar registro\n\n" + err.Message, err.InnerException);
+            }
         }
 
         public void DeleteCliente(Cliente cliente)
         {
-            string errorQuery = null;
+            Exception err = null;
 
             try {
                 this.dbconnection.Open();
             }
 
             catch (MySqlException error) {
-                MessageBox.Show(error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                throw new Exception("Falha ao abrir conexão com banco de dados!\n\n" + error.Message, error.InnerException);
             }
 
             MySqlParameter paramId = new MySqlParameter("@Id", cliente.Id);
@@ -110,22 +99,23 @@ namespace RecorteDeCoração.Controller
                     paramId, paramNome, paramEmail, paramTelefone
                 );
             }
-            catch (MySqlException error) { errorQuery = error.Message; }
+            catch (MySqlException error) { err = error; }
             finally                      { this.dbconnection.Close(); }
 
-            if (errorQuery != null) { MessageBox.Show(errorQuery, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            if (err != null) {
+                throw new Exception("Error ao tentar excluir registro\n\n" + err.Message, err.InnerException);
+            }
         }
 
         public List<Cliente> ListCliente()
         {
             List<Cliente> clientes = new List<Cliente>();
-            string errorQuery = null;
+            Exception err = null;
 
             try {
                 this.dbconnection.Open();
             } catch (MySqlException error) {
-                MessageBox.Show(error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return clientes;
+                throw new Exception("Falha ao abrir conexão com banco de dados!\n\n" + error.Message, error.InnerException);
             }
 
             try {
@@ -141,10 +131,12 @@ namespace RecorteDeCoração.Controller
                     )); ;
                 }
             }
-            catch (MySqlException error) { errorQuery = error.Message; }
-            finally                    { this.dbconnection.Close();  }
+            catch (MySqlException error) { err = error; }
+            finally                      { this.dbconnection.Close();  }
 
-            if (errorQuery != null)    {  MessageBox.Show(errorQuery, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            if (err != null) {
+                throw new Exception("Error ao tentar excluir registro\n\n" + err.Message, err.InnerException);
+            }
 
             return clientes;
         }
