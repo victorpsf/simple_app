@@ -19,15 +19,20 @@ namespace RecorteDeCoração.Model
 
         }
 
-        public Produto(int id) : this()
-        {
-            this.id = id;
-        }
-
-        public Produto(int id, string nome, decimal valor_unitario) : this(id)
+        public Produto(string nome, decimal valor_unitario): this()
         {
             this.nome = nome;
             this.valor_unitario = valor_unitario;
+        }
+
+        public Produto(string nome, decimal valor_unitario, Arquivo imagem) : this(nome, valor_unitario)
+        {
+            this.imagem = imagem;
+        }
+
+        public Produto(int id, string nome, decimal valor_unitario): this(nome, valor_unitario)
+        {
+            this.id = id;
         }
 
         public Produto(int id, string nome, decimal valor_unitario, Arquivo imagem): this(id, nome, valor_unitario)

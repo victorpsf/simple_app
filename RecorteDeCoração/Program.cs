@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using RecorteDeCoração.src;
+
 namespace RecorteDeCoração
 {
     static class Program
@@ -16,7 +18,15 @@ namespace RecorteDeCoração
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Main());
+
+            try {
+                Application.Run(new Main());
+            } 
+            
+            catch(Exception error) {
+                LogController.WriteException(error);
+                MessageBox.Show("Error: ocorreu um erro não mapeado, contate o desenvolvedor para verificar o que foi ocorrido.", "Erro não mapeado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

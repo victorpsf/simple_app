@@ -1,19 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MySql.Data.MySqlClient;
 
-using System.Data;
-using System.Data.SqlClient;
-using MySql.Data.MySqlClient;
 
 namespace RecorteDeCoração.connection
 {
     class DbConnection
     {
-        private string connectionString = "server=[dns|ip];" +
-             "user id=[user];password=[password];database=[database]";
         private MySqlConnection clientConnection;
 
         public MySqlConnection ClienteConnection
@@ -23,7 +14,7 @@ namespace RecorteDeCoração.connection
 
         public DbConnection()
         {
-            this.clientConnection = new MySqlConnection(this.connectionString);
+            this.clientConnection = new MySqlConnection(Configuration.ReadFile().ConnectionString());
         }
 
         public void Open()

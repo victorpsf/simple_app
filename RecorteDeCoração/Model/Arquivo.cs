@@ -14,7 +14,6 @@ namespace RecorteDeCoração.Model
     internal class Arquivo
     {
         #region Atributos
-
         /// <summary>
         ///     @params { id_file } serve para quando o arquivo for lido no banco de dados, para facilitar a manipulação do mesmo
         ///     dentro das referências a ponteiros e etc.
@@ -28,11 +27,9 @@ namespace RecorteDeCoração.Model
         private string type_File;
         private int length_File;
         private byte[] bytes;
-
         #endregion
 
         #region Contrutor
-
         public Arquivo()
         {
 
@@ -50,11 +47,9 @@ namespace RecorteDeCoração.Model
             this.length_File = length_File_c;
             this.bytes = bytes_c;
         }
-
         #endregion
 
         #region propriedades
-
         public int Id_File
         {
             get { return id_File; }
@@ -80,34 +75,39 @@ namespace RecorteDeCoração.Model
             get { return bytes; }
             set { bytes = value; }
         }
-
         #endregion
 
         #region Funcoes
-
-
         /// <summary>
         ///     faz a verificação do arquivo.
         /// </summary>
         /// <param name="path"></param>
         /// <returns>vetor de string com 3 posições</returns>
-        public string[] FileInfoArray(string path)
+        public dynamic FileInfo(string path)
         {
+            dynamic info = new { };
+
+            info.Name = "";
+            info.Extension = "";
+            info.Length = 0;
+
             try
             {
                 FileInfo file = new FileInfo(path);
-                string[] file_info = new string[3];
-                file_info[0] = file.Name;
-                file_info[1] = file.Extension;
-                file_info[2] = file.Length.ToString();
-                return file_info;
+
+                info.Name   = file.Name;
+                info.Type   = file.Extension;
+                info.Length = file.Length;
+
+                return info;
             }
             catch (Exception error)
             {
                 MessageBox.Show("error ao verificar informações do arquivo" + error.ToString());
-                return new string[3];
+                return info;
             }
         }
+
         /// <summary>
         ///     retorna binario da imagem.
         /// </summary>
@@ -149,9 +149,11 @@ namespace RecorteDeCoração.Model
             try
             {
                 byte[] foto = this.ByteImage(path);
+
                 MemoryStream MS = new MemoryStream(foto);
                 Image img = Image.FromStream(MS);
                 Bitmap bitm = new Bitmap(img, Width, Height);
+
                 return bitm;
             }
             catch (Exception)
@@ -160,7 +162,6 @@ namespace RecorteDeCoração.Model
                 return null;
             }
         }
-
         #endregion
     }
 

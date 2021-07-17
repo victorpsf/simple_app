@@ -22,11 +22,11 @@ namespace RecorteDeCoração.Controller
         {
             string errorQuery = null;
 
-            try
-            {
+            try {
                 this.dbconnection.Open();
-            } catch (MySqlException error)
-            {
+            } 
+
+            catch (MySqlException error) {
                 MessageBox.Show(error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -35,23 +35,23 @@ namespace RecorteDeCoração.Controller
             MySqlParameter paramEmail = new MySqlParameter("@Email", cliente.Email);
             MySqlParameter paramTelefone = new MySqlParameter("@Telefone", cliente.Telefone);
 
-            try
-            {
+            try {
                 this.dbconnection.ExecuteNonQuery("INSERT INTO `Cliente` " +
                     "(`Nome`, `Email`, `Telefone`)" +
                     "VALUES (@Nome, @Email, @Telefone);",
                     paramNome, paramEmail, paramTelefone
                 );
-            } catch(MySqlException error)
-            {
+            } 
+
+            catch (MySqlException error) {
                 errorQuery = error.Message;
-            } finally
-            {
+            } 
+
+            finally {
                 this.dbconnection.Close();
             }
 
-            if (errorQuery != null)
-            {
+            if (errorQuery != null) {
                 MessageBox.Show(errorQuery, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -60,12 +60,11 @@ namespace RecorteDeCoração.Controller
         {
             string errorQuery = null;
 
-            try
-            {
+            try {
                 this.dbconnection.Open();
             }
-            catch (MySqlException error)
-            {
+
+            catch (MySqlException error) {
                 MessageBox.Show(error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -82,7 +81,7 @@ namespace RecorteDeCoração.Controller
                 );
             }
             catch (MySqlException error) { errorQuery = error.Message; }
-            finally                    { this.dbconnection.Close(); }
+            finally                      { this.dbconnection.Close(); }
 
             if (errorQuery != null) { MessageBox.Show(errorQuery, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
@@ -91,12 +90,11 @@ namespace RecorteDeCoração.Controller
         {
             string errorQuery = null;
 
-            try
-            {
+            try {
                 this.dbconnection.Open();
             }
-            catch (MySqlException error)
-            {
+
+            catch (MySqlException error) {
                 MessageBox.Show(error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -106,15 +104,14 @@ namespace RecorteDeCoração.Controller
             MySqlParameter paramEmail = new MySqlParameter("@Email", cliente.Email);
             MySqlParameter paramTelefone = new MySqlParameter("@Telefone", cliente.Telefone);
 
-            try
-            {
+            try {
                 this.dbconnection.ExecuteNonQuery("DELETE FROM `Cliente` " +
                     "WHERE (`Id` = @Id AND `Nome` = @Nome AND `Email` = @Email AND `Telefone` = @Telefone);",
                     paramId, paramNome, paramEmail, paramTelefone
                 );
             }
             catch (MySqlException error) { errorQuery = error.Message; }
-            finally { this.dbconnection.Close(); }
+            finally                      { this.dbconnection.Close(); }
 
             if (errorQuery != null) { MessageBox.Show(errorQuery, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
@@ -126,7 +123,7 @@ namespace RecorteDeCoração.Controller
 
             try {
                 this.dbconnection.Open();
-            } catch (SqlException error) {
+            } catch (MySqlException error) {
                 MessageBox.Show(error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return clientes;
             }

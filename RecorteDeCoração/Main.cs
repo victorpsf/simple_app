@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using RecorteDeCoração.pages;
 
+using RecorteDeCoração.src;
+
 namespace RecorteDeCoração
 {
     public partial class Main : Form
@@ -20,7 +22,7 @@ namespace RecorteDeCoração
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Versão 0.1.0\n\nBanco de dados local.\nAtualmente todos os dados são salvos localmente, logo mais podera exportar os dados em json.", "About app!", MessageBoxButtons.OK, MessageBoxIcon.Question);
+            MessageBox.Show("Versão 0.1.0\n\nBanco de dados externo.\nEste aplicativo foi pensado em resolver um problema de gerencia de uma pequena empresa!", "About app!", MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
 
         private void button1_Click(object sender, EventArgs e)
