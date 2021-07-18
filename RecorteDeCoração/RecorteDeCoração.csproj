@@ -78,11 +78,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="connection\Configuration.cs" />
-    <Compile Include="connection\DbConnection.cs" />
+    <Compile Include="Connection\Configuration.cs" />
+    <Compile Include="Connection\DbConnection.cs" />
     <Compile Include="Controller\ArquivoController.cs" />
-    <Compile Include="src\FileController.cs" />
-    <Compile Include="src\LogController.cs" />
+    <Compile Include="Interfaces\ArquivoInfo.cs" />
+    <Compile Include="Source\FileController.cs" />
+    <Compile Include="Source\LogController.cs" />
     <Compile Include="Model\Arquivo.cs" />
     <Compile Include="Controller\ClienteController.cs" />
     <Compile Include="Controller\ProdutoController.cs" />
@@ -94,34 +95,34 @@
     </Compile>
     <Compile Include="Model\Cliente.cs" />
     <Compile Include="Model\Produto.cs" />
-    <Compile Include="pages\ClientePageForm.cs">
+    <Compile Include="Pages\ClientePageForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="pages\ClientePageForm.Designer.cs">
+    <Compile Include="Pages\ClientePageForm.Designer.cs">
       <DependentUpon>ClientePageForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="pages\ClienteForm\ViewForm.cs">
+    <Compile Include="Pages\ClienteForm\ViewForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="pages\ClienteForm\ViewForm.Designer.cs">
+    <Compile Include="Pages\ClienteForm\ViewForm.Designer.cs">
       <DependentUpon>ViewForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="pages\PedidoForm.cs">
+    <Compile Include="Pages\PedidoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="pages\PedidoForm.Designer.cs">
+    <Compile Include="Pages\PedidoForm.Designer.cs">
       <DependentUpon>PedidoForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="pages\ProdutoForm\ViewForm.cs">
+    <Compile Include="Pages\ProdutoForm\ViewForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="pages\ProdutoForm\ViewForm.Designer.cs">
+    <Compile Include="Pages\ProdutoForm\ViewForm.Designer.cs">
       <DependentUpon>ViewForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="pages\ProdutoPageForm.cs">
+    <Compile Include="Pages\ProdutoPageForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="pages\ProdutoPageForm.Designer.cs">
+    <Compile Include="Pages\ProdutoPageForm.Designer.cs">
       <DependentUpon>ProdutoPageForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -129,19 +130,19 @@
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="pages\ClientePageForm.resx">
+    <EmbeddedResource Include="Pages\ClientePageForm.resx">
       <DependentUpon>ClientePageForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="pages\ClienteForm\ViewForm.resx">
+    <EmbeddedResource Include="Pages\ClienteForm\ViewForm.resx">
       <DependentUpon>ViewForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="pages\PedidoForm.resx">
+    <EmbeddedResource Include="Pages\PedidoForm.resx">
       <DependentUpon>PedidoForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="pages\ProdutoForm\ViewForm.resx">
+    <EmbeddedResource Include="Pages\ProdutoForm\ViewForm.resx">
       <DependentUpon>ViewForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="pages\ProdutoPageForm.resx">
+    <EmbeddedResource Include="Pages\ProdutoPageForm.resx">
       <DependentUpon>ProdutoPageForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

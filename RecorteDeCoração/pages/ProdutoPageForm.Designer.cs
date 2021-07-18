@@ -1,5 +1,5 @@
 ﻿
-namespace RecorteDeCoração.pages
+namespace RecorteDeCoração.Pages
 {
     partial class ProdutoPageForm
     {

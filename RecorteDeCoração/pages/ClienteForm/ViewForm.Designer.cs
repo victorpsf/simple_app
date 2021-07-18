@@ -1,5 +1,5 @@
 ﻿
-namespace RecorteDeCoração.pages.ClienteForm
+namespace RecorteDeCoração.Pages.ClienteForm
 {
     partial class ViewForm
     {

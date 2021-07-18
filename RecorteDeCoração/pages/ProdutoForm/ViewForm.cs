@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using RecorteDeCoração.Model;
 using RecorteDeCoração.Controller;
 
-namespace RecorteDeCoração.pages.ProdutoForm
+namespace RecorteDeCoração.Pages.ProdutoForm
 {
     public partial class ViewForm : Form
     {
@@ -29,7 +29,7 @@ namespace RecorteDeCoração.pages.ProdutoForm
             this.dataGridView1.DataSource = null;
         }
 
-        private List<Produto> SetAndGetClientes()
+        private List<Produto> SetAndGetProdutos()
         {
             this.produtos = (new ProdutoController()).ListProduto();
             return this.produtos;
@@ -44,7 +44,7 @@ namespace RecorteDeCoração.pages.ProdutoForm
         public void LoadGrid()
         {
             this.ClearGrid();
-            this.dataGridView1.DataSource = this.SetAndGetClientes();
+            this.dataGridView1.DataSource = this.SetAndGetProdutos();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -59,10 +59,9 @@ namespace RecorteDeCoração.pages.ProdutoForm
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
-            //Cliente cliente = this.GetClient(e.RowIndex);
-
-            //if (cliente == null) return;
-            //this.form.SetProduto(cliente);
+            Produto produto = this.GetProduto(e.RowIndex);
+            if (produto == null) return;
+            this.form.SetProduto(produto);
         }
     }
 }

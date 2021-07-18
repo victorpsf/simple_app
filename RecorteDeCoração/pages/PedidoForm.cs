@@ -8,13 +8,25 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RecorteDeCoração.pages
+namespace RecorteDeCoração.Pages
 {
     public partial class PedidoForm : Form
     {
-        public PedidoForm()
+        private Main mainForm;
+
+        public PedidoForm(Main mainForm)
         {
+            this.mainForm = mainForm;
             InitializeComponent();
+        }
+
+        public void LoadPage() {
+            
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e) {
+            base.OnFormClosing(e);
+            this.mainForm.VisibleForm(true);
         }
     }
 }

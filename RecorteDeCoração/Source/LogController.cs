@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RecorteDeCoração.src
+namespace RecorteDeCoração.Source
 {
     class LogController
     {
@@ -16,10 +16,10 @@ namespace RecorteDeCoração.src
             return day + month + year + ".log";
         }
 
-        public static void WriteException(Exception error)
+        public static void WriteException(Exception error, string content = null)
         {
             string path = "./log/";
-            string content = error.Message + "\n\n" + error.StackTrace;
+            if (content == null) content = error.Message + "\n\n" + error.StackTrace;
             DateTime date = DateTime.Now;
 
             if (FileController.NotExists(path)) {
@@ -27,6 +27,13 @@ namespace RecorteDeCoração.src
             }
 
             FileController.Write(path + LogController.FileName(date), content);
+        }
+
+        public static string WriteExceptionAndGetMessage(Exception error) {
+            string content = error.Message + "\n\n" + error.StackTrace;
+
+            LogController.WriteException(error, content);
+            return content;
         }
     }
 }

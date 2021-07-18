@@ -1,15 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
-using RecorteDeCoração.pages;
 
-using RecorteDeCoração.src;
+using System;
+
+using System.Windows.Forms;
+using RecorteDeCoração.Pages;
+
+using RecorteDeCoração.Source;
 
 namespace RecorteDeCoração
 {
@@ -27,23 +29,66 @@ namespace RecorteDeCoração
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ProdutoPageForm produto = new ProdutoPageForm();
+            ProdutoPageForm produto = new ProdutoPageForm(this);
+            Cursor.Current = Cursors.WaitCursor;
 
-            produto.Show();
+            try {
+                produto.LoadPage();
+                this.VisibleForm(false);
+                produto.Show();
+            }
+
+            catch (Exception error) {
+                this.VisibleForm(true);
+                produto.Close();
+                MessageBox.Show(LogController.WriteExceptionAndGetMessage(error), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            Cursor.Current = Cursors.Default;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ClientePageForm cliente = new ClientePageForm();
+            ClientePageForm cliente = new ClientePageForm(this);
+            Cursor.Current = Cursors.WaitCursor;
 
-            cliente.Show();
+            try {
+                cliente.LoadPage();
+                this.VisibleForm(false);
+                cliente.Show();
+            }
+
+            catch (Exception error) {
+                this.VisibleForm(true);
+                cliente.Close();
+                MessageBox.Show(LogController.WriteExceptionAndGetMessage(error), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            Cursor.Current = Cursors.Default;
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            PedidoForm pedido = new PedidoForm();
+            PedidoForm pedido = new PedidoForm(this);
+            Cursor.Current = Cursors.WaitCursor;
 
-            pedido.Show();
+            try {
+                pedido.LoadPage();
+                this.VisibleForm(false);
+                pedido.Show();
+            }
+
+            catch (Exception error) {
+                this.VisibleForm(true);
+                pedido.Close();
+                MessageBox.Show(LogController.WriteExceptionAndGetMessage(error), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            Cursor.Current = Cursors.Default;
+        }
+
+        public void VisibleForm(bool visible) {
+            this.Visible = visible;
         }
     }
 }

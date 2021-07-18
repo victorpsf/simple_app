@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 using RecorteDeCoração.Model;
-using RecorteDeCoração.connection;
+using RecorteDeCoração.Connection;
 using System.Windows.Forms;
 
 using MySql.Data.MySqlClient;

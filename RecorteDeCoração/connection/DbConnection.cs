@@ -1,7 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 
-
-namespace RecorteDeCoração.connection
+namespace RecorteDeCoração.Connection
 {
     class DbConnection
     {
@@ -35,6 +34,7 @@ namespace RecorteDeCoração.connection
             {
                 foreach (MySqlParameter parameter in parameters)
                 {
+                    if (parameter == null) continue;
                     command.Parameters.Add(parameter);
                 }
             }
@@ -44,15 +44,22 @@ namespace RecorteDeCoração.connection
 
         public MySqlCommand ExecuteNonQuery(string sql, params MySqlParameter[] parameters)
         {
-            MySqlCommand command = PrepareCommand(sql, parameters); ;
+            MySqlCommand command = this.PrepareCommand(sql, parameters); ;
             command.ExecuteNonQuery();
             return command;
         }
 
         public MySqlDataReader ExecuteReader(string sql, params MySqlParameter[] parameters)
         {
-            MySqlCommand command = PrepareCommand(sql, parameters); ;
+            MySqlCommand command = this.PrepareCommand(sql, parameters); ;
             return command.ExecuteReader();
+        }
+
+        public long ExecuteScalar(string sql, params MySqlParameter[] parameters) {
+            MySqlCommand command = this.PrepareCommand(sql, parameters);
+
+            command.ExecuteScalar();
+            return command.LastInsertedId;
         }
     }
 }

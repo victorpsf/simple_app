@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
-using RecorteDeCoração.src;
+using RecorteDeCoração.Source;
 
-namespace RecorteDeCoração.connection
+namespace RecorteDeCoração.Connection
 {
     class Configuration
     {

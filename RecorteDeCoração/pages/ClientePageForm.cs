@@ -6,26 +6,31 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.RegularExpressions;
 
 using System;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 using RecorteDeCoração.Model;
 using RecorteDeCoração.Controller;
-using RecorteDeCoração.pages.ClienteForm;
+using RecorteDeCoração.Pages.ClienteForm;
+using RecorteDeCoração.Source;
 
-namespace RecorteDeCoração.pages
+namespace RecorteDeCoração.Pages
 {
     public partial class ClientePageForm : Form
     {
         private Cliente cliente;
         private ViewForm viewForm;
+        private Main mainForm;
 
-        public ClientePageForm()
+        public ClientePageForm(Main mainForm)
         {
+            this.mainForm = mainForm;
             InitializeComponent();
+        }
 
+        public void LoadPage() {
             this.button2.Enabled = false;
             this.SetView();
             this.SetToolTip();
@@ -42,15 +47,20 @@ namespace RecorteDeCoração.pages
         {
             this.viewForm = new ViewForm();
 
-            this.viewForm.TopLevel = false;
-            this.viewForm.Width = this.panel2.Width;
-            this.viewForm.Height = this.panel2.Height;
+            try {
 
-            this.panel2.Controls.Clear();
-            this.panel2.Controls.Add(this.viewForm);
+                this.viewForm.TopLevel = false;
+                this.viewForm.Width = this.panel2.Width;
+                this.viewForm.Height = this.panel2.Height;
 
-            this.viewForm.SetBaseForm(this);
-            this.viewForm.Show();
+                this.panel2.Controls.Clear();
+                this.panel2.Controls.Add(this.viewForm);
+
+                this.viewForm.SetBaseForm(this);
+                this.viewForm.Show();
+            } catch (Exception error) {
+                LogController.WriteException(error);
+            }
         }
 
         // clear fields
@@ -156,6 +166,11 @@ namespace RecorteDeCoração.pages
                 e.Handled = true;
                 MessageBox.Show("este campo aceita somente numero", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e) {
+            base.OnFormClosing(e);
+            this.mainForm.VisibleForm(true);
         }
     }
 }

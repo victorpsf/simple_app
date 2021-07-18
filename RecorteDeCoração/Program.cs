@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using RecorteDeCoração.src;
+using RecorteDeCoração.Source;
 
 namespace RecorteDeCoração
 {

@@ -10,9 +10,11 @@ using System.Windows.Forms;
 
 using RecorteDeCoração.Model;
 using RecorteDeCoração.Controller;
-using RecorteDeCoração.pages.ProdutoForm;
+using RecorteDeCoração.Pages.ProdutoForm;
+using RecorteDeCoração.Source;
+using RecorteDeCoração.Interfaces;
 
-namespace RecorteDeCoração.pages
+namespace RecorteDeCoração.Pages
 {
     public partial class ProdutoPageForm : Form
     {
@@ -20,11 +22,16 @@ namespace RecorteDeCoração.pages
         private string path = null;
         private ProdutoController produtoController = new ProdutoController();
         private ViewForm viewForm;
+        private Main mainForm;
+        private Produto produto;
 
-        public ProdutoPageForm()
+        public ProdutoPageForm(Main mainForm)
         {
+            this.mainForm = mainForm;
             InitializeComponent();
+        }
 
+        public void LoadPage() {
             this.button2.Enabled = false;
             this.SetView();
             this.SetToolTip();
@@ -80,6 +87,7 @@ namespace RecorteDeCoração.pages
         {
             this.ClearImage();
 
+            this.produto = null;
             this.label2.Text = "";
             this.textBox1.Text = "";
             this.textBox2.Text = "";
@@ -88,14 +96,39 @@ namespace RecorteDeCoração.pages
         // save
         private void button1_Click(object sender, EventArgs e)
         {
-            if (this.path != null)
-            {
-                dynamic info = this.arquivo.FileInfo(this.path);
-                this.arquivo = new Arquivo(info.Name, info.Tyoe, info.Length, this.arquivo.ByteImage(this.path));
+            try {
+                Produto produto;
+
+                if (this.produto == null) {
+                    produto = new Produto();
+                } else {
+                    produto = this.produto;
+                }
+
+                if (this.path != null) {
+                    this.arquivo = new Arquivo();
+
+                    ArquivoInfo info = FileController.FileInfo(this.path);
+                    this.arquivo = new Arquivo(info.Name, info.Extension, info.Length, FileController.ByteImage(this.path));
+                    produto.Imagem = this.arquivo;
+                }
+
+                produto.Nome = this.textBox1.Text;
+                produto.Valor_Unitario = decimal.Parse(this.textBox2.Text);
+
+                if (this.produto != null) {
+                    this.produtoController.UpdateProduto(produto);
+                } else {
+                    this.produtoController.CreateProduto(produto);
+                }
+
+                this.ClearInput();
+                this.viewForm.LoadGrid();
+            } 
+
+            catch (Exception error) {
+                LogController.WriteException(error);
             }
-
-
-            new Produto(this.textBox1.Text, decimal.Parse(this.textBox2.Text), this.arquivo);
         }
 
         // excluir
@@ -120,13 +153,33 @@ namespace RecorteDeCoração.pages
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 this.path = dialog.FileName;
-                this.pictureBox1.Image = (new Arquivo()).GetBitMap(this.path, this.pictureBox1.Width, this.pictureBox1.Height);
+                this.pictureBox1.Image = FileController.GetBitMap(this.path, this.pictureBox1.Width, this.pictureBox1.Height);
             }
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             this.ClearImage();
+        }
+
+        public void SetProduto(dynamic produto)
+        {
+            this.button2.Enabled = true;
+            this.ClearInput();
+            this.produto = produto;
+
+            this.textBox1.Text = this.produto.Nome;
+            this.textBox2.Text = this.produto.Valor_Unitario.ToString();
+            this.label2.Text   = this.produto.Id.ToString();
+
+            if (this.produto.Imagem != null) {
+                this.pictureBox1.Image = FileController.BytesToBitmap(this.produto.Imagem.Binario);
+            }
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e) {
+            base.OnFormClosing(e);
+            this.mainForm.VisibleForm(true);
         }
     }
 }

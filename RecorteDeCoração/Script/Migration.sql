@@ -1,4 +1,6 @@
-USE `recorte_decoracao`;
+USE `recorte_de_coracao`;
+
+SET FOREIGN_KEY_CHECKS=0;
 
 # 55081995611216
 DROP TABLE IF EXISTS `Arquivo`;
@@ -10,7 +12,7 @@ DROP TABLE IF EXISTS `Produto`;
 CREATE TABLE IF NOT EXISTS `Arquivo` (
 	`Id` BIGINT NOT NULL AUTO_INCREMENT,
     `Nome` VARCHAR(300) NOT NULL,
-    `Tipo` VARCHAR(300) NOT NULL,
+    `Extensao` VARCHAR(300) NOT NULL,
     `Tamanho` BIGINT NOT NULL,
     `Binario` LONGBLOB NOT NULL,
     PRIMARY KEY(`Id`)
@@ -51,3 +53,5 @@ CREATE TABLE IF NOT EXISTS `Produto_Pedido` (
     FOREIGN KEY(`Pedido`) REFERENCES `Pedido`(`Id`) ON DELETE CASCADE,
     PRIMARY KEY(`Id`)
 );
+
+SET FOREIGN_KEY_CHECKS=1;

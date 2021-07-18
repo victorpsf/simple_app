@@ -1,18 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 using RecorteDeCoração.Model;
 using RecorteDeCoração.Controller;
-using RecorteDeCoração.pages;
+using RecorteDeCoração.Pages;
 
-namespace RecorteDeCoração.pages.ClienteForm
+namespace RecorteDeCoração.Pages.ClienteForm
 {
     public partial class ViewForm : Form
     {
