@@ -29,9 +29,10 @@ namespace RecorteDeCoração.Controller
             MySqlParameter paramImagem = null;
 
             if (produto.Imagem != null) {
-                int arquivoId = this.arquivoController.CreateArquivo(produto.Imagem);
+                if (produto.Imagem.Id == 0)
+                    produto.Imagem = this.arquivoController.CreateArquivo(produto.Imagem);
 
-                paramImagem = new MySqlParameter("@Imagem", arquivoId);
+                paramImagem = new MySqlParameter("@Imagem", produto.Imagem.Id);
             }
 
             try {
@@ -70,18 +71,23 @@ namespace RecorteDeCoração.Controller
                 throw new Exception("Falha ao abrir conexão com banco de dados!\n\n" + error.Message, error.InnerException);
             }
 
-            if (produto.Imagem != null) {
-            }
-
             MySqlParameter paramId = new MySqlParameter("@Id", produto.Id);
             MySqlParameter paramNome = new MySqlParameter("@Nome", produto.Nome);
             MySqlParameter paramValor = new MySqlParameter("@ValorUnitario", produto.Valor_Unitario);
+            MySqlParameter paramImagem = null;
+
+            if (produto.Imagem != null) {
+                if (produto.Imagem.Id == 0)
+                    produto.Imagem = this.arquivoController.CreateArquivo(produto.Imagem);
+
+                paramImagem = new MySqlParameter("@Imagem", produto.Imagem.Id);
+            }
 
             try {
                 this.dbConnection.ExecuteNonQuery("UPDATE `Produto` SET " +
-                    "`Nome` = @Nome, `Valor Unitario` = @ValorUnitario " + 
+                    "`Nome` = @Nome, `Valor Unitario` = @ValorUnitario, `Imagem` = @Imagem " + 
                     "WHERE (`Id` = @Id);",
-                    paramId, paramNome, paramValor
+                    paramId, paramNome, paramValor, paramImagem
                 );
             }
 
@@ -116,7 +122,7 @@ namespace RecorteDeCoração.Controller
                             reader.GetInt32(reader.GetOrdinal("Id")),
                             reader.GetString(reader.GetOrdinal("Nome")),
                             reader.GetDecimal(reader.GetOrdinal("Valor Unitario")),
-                            this.arquivoController.GetArquivo(reader.GetInt32(reader.GetOrdinal("Imagem")))
+                            this.arquivoController.GetArquivo(reader["Imagem"])
                         )
                     );
                 }
@@ -131,6 +137,37 @@ namespace RecorteDeCoração.Controller
             }
 
             return produtos;
+        }
+
+        public void DeleteProduto(Produto produto) {
+            Exception err = null;
+
+            if (produto.Imagem != null) {
+                this.arquivoController.DeleteArquivo(produto.Imagem);
+            }
+
+            try {
+                this.dbConnection.Open();
+            } 
+
+            catch (MySqlException error) {
+                throw new Exception("Falha ao abrir conexão com banco de dados!\n\n" + error.Message, error.InnerException);
+            }
+
+            MySqlParameter paramId = new MySqlParameter("@Id", produto.Id);
+            MySqlParameter paramNome = new MySqlParameter("@Nome", produto.Nome);
+
+            try {
+                this.dbConnection.ExecuteNonQuery("DELETE FROM `Produto` WHERE (`Id` = @Id AND `Nome` = @Nome);", paramId, paramNome);
+            } 
+
+            catch (MySqlException error) { err = error; }
+
+            this.dbConnection.Close();
+
+            if (err != null) {
+                throw new Exception("Não foi possível remover o registro\n\n" + err.Message, err.InnerException);
+            }
         }
     }
 }

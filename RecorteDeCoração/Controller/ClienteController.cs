@@ -100,7 +100,8 @@ namespace RecorteDeCoração.Controller
                 );
             }
             catch (MySqlException error) { err = error; }
-            finally                      { this.dbconnection.Close(); }
+
+            this.dbconnection.Close();
 
             if (err != null) {
                 throw new Exception("Error ao tentar excluir registro\n\n" + err.Message, err.InnerException);

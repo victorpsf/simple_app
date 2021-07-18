@@ -17,7 +17,7 @@ namespace RecorteDeCoração.Controller
 
         public ArquivoController() { }
 
-        public int CreateArquivo(Arquivo arquivo)
+        public Arquivo CreateArquivo(Arquivo arquivo)
         {
             long scalar = 0;
             MySqlException err = null;
@@ -51,15 +51,23 @@ namespace RecorteDeCoração.Controller
                 throw new Exception("Error ao tentar salvar registro\n\n" + err.Message, err.InnerException);
             }
 
-            return Convert.ToInt32(scalar);
+            return new Arquivo(Convert.ToInt32(scalar), arquivo.Nome, arquivo.Extensao, arquivo.Tamanho, arquivo.Binario);
         }
 
-        public Arquivo GetArquivo(int id = 0) {
-            if (id == 0) return null;
+        public Arquivo GetArquivo(object id) {
+            int QueryId;
+
+            try
+            {
+                QueryId = Convert.ToInt32(id);
+            } catch (Exception error) {
+                return null;
+            }
+
             Exception err = null;
             Arquivo arquivo = null;
 
-            MySqlParameter paramId = new MySqlParameter("@Id", id);
+            MySqlParameter paramId = new MySqlParameter("@Id", QueryId);
 
             try {
                 this.dbConnection.Open();
@@ -94,6 +102,42 @@ namespace RecorteDeCoração.Controller
             }
 
             return arquivo;
+        }
+
+        public void DeleteArquivo(Arquivo arquivo)
+        {
+            Exception err = null;
+
+            try
+            {
+                this.dbConnection.Open();
+            }
+
+            catch (MySqlException error)
+            {
+                throw new Exception("Falha ao abrir conexão com banco de dados!\n\n" + error.Message, error.InnerException);
+            }
+
+            MySqlParameter paramId = new MySqlParameter("@Id", arquivo.Id);
+            MySqlParameter paramNome = new MySqlParameter("@Nome", arquivo.Nome);
+            MySqlParameter paramExtensao = new MySqlParameter("@Extensao", arquivo.Extensao);
+            MySqlParameter paramTamanho = new MySqlParameter("@Tamanho", arquivo.Tamanho);
+
+            try
+            {
+                this.dbConnection.ExecuteNonQuery("DELETE FROM `Arquivo` " +
+                    "WHERE (`Id` = @Id AND `Nome` = @Nome AND `Extensao` = @Extensao AND `Tamanho` = @Tamanho);",
+                    paramId, paramNome, paramExtensao, paramTamanho
+                );
+            }
+            catch (MySqlException error) { err = error; }
+
+            this.dbConnection.Close();
+
+            if (err != null)
+            {
+                throw new Exception("Error ao tentar excluir registro\n\n" + err.Message, err.InnerException);
+            }
         }
     }
 }
