@@ -26,7 +26,7 @@ namespace RecorteDeCoração.Controller
 
             MySqlParameter paramNome = new MySqlParameter("@Nome", produto.Nome);
             MySqlParameter paramValor = new MySqlParameter("@ValorUnitario", produto.Valor_Unitario);
-            MySqlParameter paramImagem = null;
+            MySqlParameter paramImagem = new MySqlParameter("@Imagem", null);
 
             if (produto.Imagem != null) {
                 if (produto.Imagem.Id == 0)

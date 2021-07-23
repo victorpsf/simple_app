@@ -8,6 +8,7 @@ DROP TABLE IF EXISTS `Produto_Pedido`;
 DROP TABLE IF EXISTS `Pedido`;
 DROP TABLE IF EXISTS `Cliente`;
 DROP TABLE IF EXISTS `Produto`;
+DROP TABLE IF EXISTS `Pagamento`;
 
 CREATE TABLE IF NOT EXISTS `Arquivo` (
 	`Id` BIGINT NOT NULL AUTO_INCREMENT,
@@ -40,6 +41,9 @@ CREATE TABLE IF NOT EXISTS `Pedido` (
     `Cliente` BIGINT NOT NULL,
     `Data Entrega` DATETIME NOT NULL,
     `Data Pedido` DATETIME NOT NULL,
+    `Status Pedido` VARCHAR(220) NOT NULL,
+    `Valor Final` DECIMAL(18,2),
+    `Valor Pago` DECIMAL(18,2),
     FOREIGN KEY(`Cliente`) REFERENCES `Cliente`(`Id`) ON DELETE RESTRICT,
     PRIMARY KEY(`Id`)
 );
@@ -50,6 +54,16 @@ CREATE TABLE IF NOT EXISTS `Produto_Pedido` (
     `Pedido` BIGINT NOT NULL,
     `Quantidade` INT NOT NULL,
     FOREIGN KEY(`Produto`) REFERENCES `Produto`(`Id`) ON DELETE CASCADE,
+    FOREIGN KEY(`Pedido`) REFERENCES `Pedido`(`Id`) ON DELETE CASCADE,
+    PRIMARY KEY(`Id`)
+);
+
+CREATE TABLE IF NOT EXISTS `Pagamento` (
+	`Id` BIGINT NOT NULL AUTO_INCREMENT,
+    `Valor` DECIMAL(18,2) NOT NULL,
+    `Pedido` BIGINT NOT NULL,
+    `Comprovante` BIGINT NOT NULL,
+    FOREIGN KEY(`Comprovante`) REFERENCES `Arquivo`(`Id`) ON DELETE CASCADE,
     FOREIGN KEY(`Pedido`) REFERENCES `Pedido`(`Id`) ON DELETE CASCADE,
     PRIMARY KEY(`Id`)
 );

@@ -69,16 +69,18 @@ namespace RecorteDeCoração
 
         private void button3_Click(object sender, EventArgs e)
         {
-            PedidoForm pedido = new PedidoForm(this);
+            PedidoPageForm pedido = new PedidoPageForm(this);
             Cursor.Current = Cursors.WaitCursor;
 
-            try {
+            try
+            {
                 pedido.LoadPage();
                 this.VisibleForm(false);
                 pedido.Show();
             }
 
-            catch (Exception error) {
+            catch (Exception error)
+            {
                 this.VisibleForm(true);
                 pedido.Close();
                 MessageBox.Show(LogController.WriteExceptionAndGetMessage(error), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

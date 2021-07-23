@@ -8,7 +8,6 @@ C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\obj\Debug\Reco
 C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\obj\Debug\RecorteDeCoração.exe
 C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\obj\Debug\RecorteDeCoração.pdb
 C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\obj\Debug\RecorteDeCoração.Main.resources
-C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\obj\Debug\RecorteDeCoração.pages.PedidoForm.resources
 C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\bin\Debug\BouncyCastle.Crypto.dll
 C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\bin\Debug\MySql.Data.dll
 C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\obj\Debug\RecorteDeCoração.csproj.CopyComplete
@@ -29,3 +28,7 @@ C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\bin\Debug\K4os
 C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\bin\Debug\System.Numerics.Vectors.dll
 C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\bin\Debug\MySql.Data.xml
 C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\bin\Debug\Newtonsoft.Json.xml
+C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\obj\Debug\RecorteDeCoração.Pages.PedidoPageForm.resources
+C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\obj\Debug\RecorteDeCoração.Pages.PedidoForm.PedidoProduto.resources
+C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\obj\Debug\RecorteDeCoração.Pages.PedidoForm.ClientePedido.resources
+C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\obj\Debug\RecorteDeCoração.Pages.PedidoForm.CreateForm.resources
