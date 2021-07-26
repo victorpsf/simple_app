@@ -81,8 +81,48 @@
     <Compile Include="Connection\Configuration.cs" />
     <Compile Include="Connection\DbConnection.cs" />
     <Compile Include="Controller\ArquivoController.cs" />
+    <Compile Include="Controller\FinanceiroController.cs" />
+    <Compile Include="Controller\PedidoController.cs" />
+    <Compile Include="Controller\ProdutoPedidoController.cs" />
+    <Compile Include="Forms\ClienteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ClienteForm.Designer.cs">
+      <DependentUpon>ClienteForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LogoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LogoForm.Designer.cs">
+      <DependentUpon>LogoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PedidoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PedidoForm.Designer.cs">
+      <DependentUpon>PedidoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ProdutoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ProdutoForm.Designer.cs">
+      <DependentUpon>ProdutoForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Interfaces\ArquivoInfo.cs" />
+    <Compile Include="Interfaces\DefaultFormFunctions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Model\Financeiro.cs" />
+    <Compile Include="Model\Pedido.cs" />
     <Compile Include="Model\ProdutoPedido.cs" />
+    <Compile Include="Model\StatusFinanceiro.cs" />
+    <Compile Include="Model\StatusPedido.cs" />
     <Compile Include="Pages\PedidoForm\ClientePedido.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,23 +160,11 @@
     <Compile Include="Pages\ClientePageForm.Designer.cs">
       <DependentUpon>ClientePageForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ClienteForm\ViewForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Pages\ClienteForm\ViewForm.Designer.cs">
-      <DependentUpon>ViewForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Pages\PedidoForm\CreateForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Pages\PedidoForm\CreateForm.Designer.cs">
       <DependentUpon>CreateForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\ProdutoForm\ViewForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Pages\ProdutoForm\ViewForm.Designer.cs">
-      <DependentUpon>ViewForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Pages\ProdutoPageForm.cs">
       <SubType>Form</SubType>
@@ -146,14 +174,26 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\ClienteForm.resx">
+      <DependentUpon>ClienteForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LogoForm.resx">
+      <DependentUpon>LogoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PedidoForm.resx">
+      <DependentUpon>PedidoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ProdutoForm.resx">
+      <DependentUpon>ProdutoForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\ClientePageForm.resx">
       <DependentUpon>ClientePageForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\ClienteForm\ViewForm.resx">
-      <DependentUpon>ViewForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\PedidoForm\ClientePedido.resx">
       <DependentUpon>ClientePedido.cs</DependentUpon>
@@ -166,9 +206,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\PedidoPageForm.resx">
       <DependentUpon>PedidoPageForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\ProdutoForm\ViewForm.resx">
-      <DependentUpon>ViewForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\ProdutoPageForm.resx">
       <DependentUpon>ProdutoPageForm.cs</DependentUpon>
@@ -241,6 +278,33 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Pedido.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RecorteDeCoracaoLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Reorte D%27Coração Wallpaper.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Forms\Pedido\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loupe_rec.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save-file_rec.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save-file_rec1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rubber_rec.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trash_rec.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refresh_rec.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

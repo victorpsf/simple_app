@@ -23,10 +23,11 @@ namespace RecorteDeCoração.Connection
 
         public void Close()
         {
-            this.clientConnection.Close();
+            if (this.clientConnection.State == System.Data.ConnectionState.Open)
+                this.clientConnection.Close();
         }
 
-        private MySqlCommand PrepareCommand(string sql, MySqlParameter[] parameters)
+        public MySqlCommand PrepareCommand(string sql, MySqlParameter[] parameters = null)
         {
             MySqlCommand command = new MySqlCommand(sql, this.clientConnection);
 

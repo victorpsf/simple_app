@@ -8,7 +8,7 @@ namespace RecorteDeCoração.Model
 {
     internal class Cliente
     {
-        private int id;
+        private long  id;
         private string nome;
         private string email;
         private string telefone;
@@ -24,12 +24,12 @@ namespace RecorteDeCoração.Model
             this.telefone = telefone;
         }
 
-        public Cliente(int id, string nome, string email, string telefone): this(nome, email, telefone)
+        public Cliente(long id, string nome, string email, string telefone): this(nome, email, telefone)
         {
             this.id = id;
         }
 
-        public int Id
+        public long Id
         {
             get { return this.id; }
         }

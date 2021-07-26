@@ -20,7 +20,8 @@ namespace RecorteDeCoração
             Application.SetCompatibleTextRenderingDefault(false);
 
             try {
-                Application.Run(new Main());
+                Application.Run(new RecorteDeCoração.Forms.MainForm());
+                //Application.Run(new Main());
             } 
             
             catch(Exception error) {

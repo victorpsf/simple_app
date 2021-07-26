@@ -8,7 +8,7 @@ namespace RecorteDeCoração.Model
 {
     internal class Produto
     {
-        private int id;
+        private long id;
         private string nome;
         private decimal valor_unitario;
 
@@ -30,17 +30,17 @@ namespace RecorteDeCoração.Model
             this.imagem = imagem;
         }
 
-        public Produto(int id, string nome, decimal valor_unitario): this(nome, valor_unitario)
+        public Produto(long id, string nome, decimal valor_unitario): this(nome, valor_unitario)
         {
             this.id = id;
         }
 
-        public Produto(int id, string nome, decimal valor_unitario, Arquivo imagem): this(id, nome, valor_unitario)
+        public Produto(long id, string nome, decimal valor_unitario, Arquivo imagem): this(id, nome, valor_unitario)
         {
             this.imagem = imagem;
         }
 
-        public int Id
+        public long Id
         {
             get { return this.id; } 
         }

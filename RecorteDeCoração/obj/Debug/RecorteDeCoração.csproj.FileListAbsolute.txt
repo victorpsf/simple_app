@@ -12,8 +12,6 @@ C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\bin\Debug\Boun
 C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\bin\Debug\MySql.Data.dll
 C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\obj\Debug\RecorteDeCoração.csproj.CopyComplete
 C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\obj\Debug\RecorteDeCoração.pages.ClientePageForm.resources
-C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\obj\Debug\RecorteDeCoração.pages.ClienteForm.ViewForm.resources
-C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\obj\Debug\RecorteDeCoração.pages.ProdutoForm.ViewForm.resources
 C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\obj\Debug\RecorteDeCoração.pages.ProdutoPageForm.resources
 C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\bin\Debug\Newtonsoft.Json.dll
 C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\bin\Debug\Google.Protobuf.dll
@@ -32,3 +30,8 @@ C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\obj\Debug\Reco
 C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\obj\Debug\RecorteDeCoração.Pages.PedidoForm.PedidoProduto.resources
 C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\obj\Debug\RecorteDeCoração.Pages.PedidoForm.ClientePedido.resources
 C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\obj\Debug\RecorteDeCoração.Pages.PedidoForm.CreateForm.resources
+C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\obj\Debug\RecorteDeCoração.Forms.MainForm.resources
+C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\obj\Debug\RecorteDeCoração.Forms.LogoForm.resources
+C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\obj\Debug\RecorteDeCoração.Forms.ClienteForm.resources
+C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\obj\Debug\RecorteDeCoração.Forms.ProdutoForm.resources
+C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\obj\Debug\RecorteDeCoração.Forms.PedidoForm.resources

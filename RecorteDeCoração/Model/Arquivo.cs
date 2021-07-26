@@ -16,7 +16,7 @@ namespace RecorteDeCoração.Model
     ///     @obs: puxar os arquivos de dados só pode ser feito mediante a escolha, para evitar de carregar inumeros arquivos 
     ///           e ficar com eles em memoria.
     /// </summary>
-    private int id;
+    private long id;
     private string nome;
     private string extensao;
     private long tamanho;
@@ -34,14 +34,14 @@ namespace RecorteDeCoração.Model
       this.binario = binario;
     }
 
-    public Arquivo(int id, string nome, string extensao, long tamanho, byte[] binario) : this(nome, extensao, tamanho, binario) {
+    public Arquivo(long id, string nome, string extensao, long tamanho, byte[] binario) : this(nome, extensao, tamanho, binario) {
       this.id = id;      
     }
 
     #endregion
 
     #region propriedades
-    public int Id
+    public long Id
     {
       get { return this.id; }
       set { this.id = value; }

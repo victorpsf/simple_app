@@ -163,7 +163,7 @@ namespace RecorteDeCoração.Pages
             this.pictureBox2.Size = new System.Drawing.Size(20, 20);
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.button1_Click);
+            //this.pictureBox2.Click += new System.EventHandler(this.button1_Click);
             // 
             // pictureBox3
             // 
@@ -176,7 +176,7 @@ namespace RecorteDeCoração.Pages
             this.pictureBox3.Size = new System.Drawing.Size(20, 20);
             this.pictureBox3.TabIndex = 1;
             this.pictureBox3.TabStop = false;
-            this.pictureBox3.Click += new System.EventHandler(this.button3_Click);
+            //this.pictureBox3.Click += new System.EventHandler(this.button3_Click);
             // 
             // tableLayoutPanel6
             // 
@@ -203,7 +203,7 @@ namespace RecorteDeCoração.Pages
             this.pictureBox4.Size = new System.Drawing.Size(20, 20);
             this.pictureBox4.TabIndex = 0;
             this.pictureBox4.TabStop = false;
-            this.pictureBox4.Click += new System.EventHandler(this.button2_Click);
+            //this.pictureBox4.Click += new System.EventHandler(this.button2_Click);
             // 
             // tableLayoutPanel3
             // 
@@ -244,10 +244,11 @@ namespace RecorteDeCoração.Pages
             // 
             this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.textBox2.Location = new System.Drawing.Point(87, 66);
+            this.textBox2.MaxLength = 18;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(83, 20);
+            this.textBox2.Size = new System.Drawing.Size(141, 20);
             this.textBox2.TabIndex = 5;
-            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
+            //this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
             // 
             // label1
             // 
@@ -292,6 +293,7 @@ namespace RecorteDeCoração.Pages
             // 
             this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.textBox1.Location = new System.Drawing.Point(87, 35);
+            this.textBox1.MaxLength = 300;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(190, 20);
             this.textBox1.TabIndex = 4;
@@ -349,7 +351,7 @@ namespace RecorteDeCoração.Pages
             this.pictureBox5.Size = new System.Drawing.Size(20, 20);
             this.pictureBox5.TabIndex = 0;
             this.pictureBox5.TabStop = false;
-            this.pictureBox5.Click += new System.EventHandler(this.button4_Click);
+            //this.pictureBox5.Click += new System.EventHandler(this.button4_Click);
             // 
             // pictureBox6
             // 
@@ -362,7 +364,7 @@ namespace RecorteDeCoração.Pages
             this.pictureBox6.Size = new System.Drawing.Size(20, 20);
             this.pictureBox6.TabIndex = 1;
             this.pictureBox6.TabStop = false;
-            this.pictureBox6.Click += new System.EventHandler(this.button5_Click);
+            //this.pictureBox6.Click += new System.EventHandler(this.button5_Click);
             // 
             // panel2
             // 

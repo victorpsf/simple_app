@@ -16,6 +16,7 @@ CREATE TABLE IF NOT EXISTS `Arquivo` (
     `Extensao` VARCHAR(300) NOT NULL,
     `Tamanho` BIGINT NOT NULL,
     `Binario` LONGBLOB NOT NULL,
+    `Criado Em` DATETIME DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY(`Id`)
 );
 
@@ -24,6 +25,7 @@ CREATE TABLE IF NOT EXISTS `Cliente` (
     `Nome` VARCHAR(300) NOT NULL,
     `Email` VARCHAR(300) NOT NULL UNIQUE,
     `Telefone` BIGINT NOT NULL,
+    `Criado Em` DATETIME DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY(`Id`)
 );
 
@@ -32,6 +34,7 @@ CREATE TABLE IF NOT EXISTS `Produto` (
     `Nome` VARCHAR(300) NOT NULL,
     `Valor Unitario` DECIMAL(18, 2) NOT NULL,
     `Imagem` BIGINT,
+    `Criado Em` DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY(`Imagem`) REFERENCES `Arquivo`(`Id`) ON DELETE SET NULL,
     PRIMARY KEY(`Id`)
 );
@@ -41,9 +44,8 @@ CREATE TABLE IF NOT EXISTS `Pedido` (
     `Cliente` BIGINT NOT NULL,
     `Data Entrega` DATETIME NOT NULL,
     `Data Pedido` DATETIME NOT NULL,
-    `Status Pedido` VARCHAR(220) NOT NULL,
-    `Valor Final` DECIMAL(18,2),
-    `Valor Pago` DECIMAL(18,2),
+    `Status` INT NOT NULL,
+    `Criado Em` DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY(`Cliente`) REFERENCES `Cliente`(`Id`) ON DELETE RESTRICT,
     PRIMARY KEY(`Id`)
 );
@@ -52,19 +54,23 @@ CREATE TABLE IF NOT EXISTS `Produto_Pedido` (
 	`Id` BIGINT NOT NULL AUTO_INCREMENT,
     `Produto` BIGINT NOT NULL,
     `Pedido` BIGINT NOT NULL,
-    `Quantidade` INT NOT NULL,
-    FOREIGN KEY(`Produto`) REFERENCES `Produto`(`Id`) ON DELETE CASCADE,
-    FOREIGN KEY(`Pedido`) REFERENCES `Pedido`(`Id`) ON DELETE CASCADE,
+    `Quantidade` INT NOT NULL, 
+    `Valor Total` DECIMAL(18,2) NOT NULL,
+    `Criado Em` DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY(`Produto`) REFERENCES `Produto`(`Id`) ON DELETE RESTRICT,
+    FOREIGN KEY(`Pedido`) REFERENCES `Pedido`(`Id`) ON DELETE RESTRICT,
     PRIMARY KEY(`Id`)
 );
 
 CREATE TABLE IF NOT EXISTS `Pagamento` (
 	`Id` BIGINT NOT NULL AUTO_INCREMENT,
     `Valor` DECIMAL(18,2) NOT NULL,
-    `Pedido` BIGINT NOT NULL,
-    `Comprovante` BIGINT NOT NULL,
-    FOREIGN KEY(`Comprovante`) REFERENCES `Arquivo`(`Id`) ON DELETE CASCADE,
-    FOREIGN KEY(`Pedido`) REFERENCES `Pedido`(`Id`) ON DELETE CASCADE,
+    `Status` INT NOT NULL, 
+    `Pedido` BIGINT,
+    `Comprovante` BIGINT,
+    `Criado em` DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY(`Comprovante`) REFERENCES `Arquivo`(`Id`) ON DELETE SET NULL,
+    FOREIGN KEY(`Pedido`) REFERENCES `Pedido`(`Id`) ON DELETE RESTRICT,
     PRIMARY KEY(`Id`)
 );
 
