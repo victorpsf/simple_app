@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RecorteDeCoração.Forms
+namespace RecorteDeCoração.Forms.Pedido
 {
-    public partial class PedidoForm : Form
+    public partial class PedidoFormForm : Form
     {
-        public PedidoForm()
+        public PedidoFormForm()
         {
             InitializeComponent();
-        }
-
-        private void pictureBox5_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

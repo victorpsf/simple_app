@@ -89,5 +89,21 @@ namespace RecorteDeCoração.Forms
             this.currentForm = produto;
             this.SetForm();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+
+            PedidoForm pedido = new PedidoForm() { TopLevel = false, FormBorderStyle = FormBorderStyle.None };
+
+            //pedido.LoadData();
+            //pedido.ReloadGrid();
+
+            Cursor.Current = Cursors.Default;
+
+            this.UnsetForm();
+            this.currentForm = pedido;
+            this.SetForm();
+        }
     }
 }

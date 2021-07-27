@@ -63,6 +63,16 @@ namespace RecorteDeCoração.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap backd_r {
+            get {
+                object obj = ResourceManager.GetObject("backd_r", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap checklist {
             get {
                 object obj = ResourceManager.GetObject("checklist", resourceCulture);
@@ -93,6 +103,16 @@ namespace RecorteDeCoração.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap created_r {
+            get {
+                object obj = ResourceManager.GetObject("created_r", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap file_add {
             get {
                 object obj = ResourceManager.GetObject("file_add", resourceCulture);
@@ -106,6 +126,16 @@ namespace RecorteDeCoração.Properties {
         internal static System.Drawing.Bitmap file_rem {
             get {
                 object obj = ResourceManager.GetObject("file_rem", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap filter_r {
+            get {
+                object obj = ResourceManager.GetObject("filter_r", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -176,6 +206,16 @@ namespace RecorteDeCoração.Properties {
         internal static System.Drawing.Bitmap refresh_rec {
             get {
                 object obj = ResourceManager.GetObject("refresh_rec", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap refreshd_rec {
+            get {
+                object obj = ResourceManager.GetObject("refreshd_rec", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -266,6 +306,36 @@ namespace RecorteDeCoração.Properties {
         internal static System.Drawing.Bitmap trash_rec {
             get {
                 object obj = ResourceManager.GetObject("trash_rec", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap trashd_rec {
+            get {
+                object obj = ResourceManager.GetObject("trashd_rec", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap view_r {
+            get {
+                object obj = ResourceManager.GetObject("view_r", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap viewd_r {
+            get {
+                object obj = ResourceManager.GetObject("viewd_r", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
