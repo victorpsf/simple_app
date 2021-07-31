@@ -103,6 +103,16 @@ namespace RecorteDeCoração.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap create_r {
+            get {
+                object obj = ResourceManager.GetObject("create_r", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap created_r {
             get {
                 object obj = ResourceManager.GetObject("created_r", resourceCulture);

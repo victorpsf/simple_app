@@ -187,6 +187,9 @@
   <data name="save-file_rec1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\save-file_rec1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="backd_r" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\backd_r.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="filter_r" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\filter_r.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -199,7 +202,7 @@
   <data name="rubber_rec" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\rubber_rec.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="backd_r" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\backd_r.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="create_r" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\create_r.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

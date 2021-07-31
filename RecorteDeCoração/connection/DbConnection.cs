@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using System;
 
 namespace RecorteDeCoração.Connection
 {
@@ -61,6 +62,14 @@ namespace RecorteDeCoração.Connection
 
             command.ExecuteScalar();
             return command.LastInsertedId;
+        }
+
+        public bool IsNull(MySqlDataReader reader, string field) {
+            return DBNull.Value.Equals(reader[field]);
+        }
+
+        public bool IsNotNull(MySqlDataReader reader, string field) {
+            return !this.IsNull(reader, field);
         }
     }
 }

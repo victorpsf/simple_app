@@ -142,31 +142,8 @@ namespace RecorteDeCoração.Forms
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
-            List<Produto> produtos = new List<Produto>();
-            foreach (Produto produto in this.dataSource)
-            {
-                if (this.comboBox1.Text == "Id")
-                {
-                    if (produto.Id == Convert.ToInt32(this.textBox3.Text))
-                        produtos.Add(produto);
-                }
 
-                if (this.comboBox1.Text == "Nome")
-                {
-                    if (Regex.Match(produto.Nome.ToLower().Replace(" ", ""), @"" + this.textBox3.Text.ToLower().Replace(" ", "") + "").Success)
-                        produtos.Add(produto);
-                }
-            }
-
-            if (produtos.Count == 0)
-            {
-                MessageBox.Show("Nenhum valor encontrado, tente recarregar a pagina no icone\ne tente denovo.");
-                this.listView = this.dataSource;
-            }
-
-            else this.listView = produtos;
-
-            this.ClearInput();
+            this.listView = ProdutoController.Filter(this.dataSource, this.comboBox1.Text, this.textBox3.Text);
             this.ReloadGrid();
 
             Cursor.Current = Cursors.Default;
@@ -358,8 +335,14 @@ namespace RecorteDeCoração.Forms
         {
             Cursor.Current = Cursors.WaitCursor;
 
-            this.LoadData();
-            this.ReloadGrid();
+            try { 
+                this.LoadData();
+                this.ReloadGrid();
+            }
+            catch (Exception error) {
+                LogController.WriteException(error);
+                MessageBox.Show("Não foi possivel recarregar registros", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
             Cursor.Current = Cursors.Default;
         }
@@ -395,26 +378,7 @@ namespace RecorteDeCoração.Forms
 
         private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
         {
-            switch(this.comboBox1.Text)
-            {
-                case "Id":
-                    if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)) {
-                        e.Handled = true;
-                        MessageBox.Show("este campo aceita somente numero", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    break;
-                case "Nome":
-                    break;
-            }
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex < 0 || this.listView.Count < e.RowIndex) return;
-            Produto produto = this.GetValueInList(e.RowIndex);
-            if (produto == null) return;
-
-            this.InputValues(produto);
+            ProdutoController.ValidateFilterEvent(sender, e, this.comboBox1.Text);
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)

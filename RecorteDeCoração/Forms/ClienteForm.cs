@@ -234,69 +234,14 @@ namespace RecorteDeCoração.Forms
         // search
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            List<Cliente> clientes = new List<Cliente>();
-
-            foreach (Cliente cliente in this.dataSource) {
-                if (this.comboBox1.Text == "Id")
-                {
-                    if (cliente.Id == Convert.ToInt32(this.textBox4.Text))
-                        clientes.Add(cliente);
-                }
-
-                else if (this.comboBox1.Text == "Nome")
-                {
-                    if (Regex.Match(cliente.Nome, @"" + this.textBox4.Text + "").Success)
-                        clientes.Add(cliente);
-                }
-
-                else if (this.comboBox1.Text == "Email")
-                {
-                    if (Regex.Match(cliente.Email, @"" + this.textBox4.Text + "").Success)
-                        clientes.Add(cliente);
-                }
-
-                else if (this.comboBox1.Text == "Telefone")
-                {
-                    if (Regex.Match(cliente.Telefone, @"" + this.textBox4.Text + "").Success)
-                        clientes.Add(cliente);
-                }
-
-                continue;
-            }
-
-            if (clientes.Count == 0) {
-                MessageBox.Show("Nenhum valor encontrado, tente recarregar a pagina no icone\ne tente denovo.");
-                this.listView = this.dataSource;
-            } 
-            
-            else {
-                this.listView = clientes;
-            }
-
+            this.listView = ClienteController.Filter(this.dataSource, this.comboBox1.Text, this.textBox4.Text);
             this.ReloadGrid();
         }
 
         #region controller
         private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
         {
-            switch(this.comboBox1.Text)
-            {
-                case "Id":
-                    if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)) {
-                        e.Handled = true;
-                        MessageBox.Show("este campo aceita somente numero", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    break;
-                case "Nome":
-                case "Email":
-                    break;
-                case "Telefone":
-                    if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)) {
-                        e.Handled = true;
-                        MessageBox.Show("este campo aceita somente numero", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    break;
-            }
+            ClienteController.ValidateFilterEvent(sender, e, this.comboBox1.Text);
         }
 
         private void textBox3_KeyPress(object sender, KeyPressEventArgs e)

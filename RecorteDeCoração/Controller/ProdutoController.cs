@@ -9,6 +9,7 @@ using MySql.Data.MySqlClient;
 using RecorteDeCoração.Model;
 using RecorteDeCoração.Connection;
 
+using System.Text.RegularExpressions;
 using RecorteDeCoração.Source;
 
 namespace RecorteDeCoração.Controller
@@ -113,154 +114,45 @@ namespace RecorteDeCoração.Controller
             return produtos;
         }
 
-        //private DbConnection dbConnection = new DbConnection();
-        //private ArquivoController arquivoController = new ArquivoController();
+        public static List<Produto> Filter(List<Produto> produtos, string field, string value)
+        {
+            List<Produto> FilterProdutos = new List<Produto>();
 
-        //public ProdutoController() { }
+            foreach (Produto produto in produtos)
+            {
+                if (field == "Id")
+                {
+                    if (produto.Id == Convert.ToInt64(value))
+                        FilterProdutos.Add(produto);
+                    continue;
+                }
 
+                string current_value = "";
+                if (field == "Nome") current_value = produto.Nome;
 
-        //public Produto CreateProduto(Produto produto)
-        //{
-        //    this.dbConnection.Open();
+                if (Regex.Match(current_value.ToLower(), @"" + value.ToLower() + "").Success)
+                    FilterProdutos.Add(produto);
 
-        //    long scalar = this.dbConnection.ExecuteScalar("INSERT INTO `Produto` " +
-        //        "(`Nome`, `Valor Unitario`)" +
-        //        "VALUES (@Nome, @ValorUnitario);",
-        //        new MySqlParameter("@Nome", produto.Nome),
-        //        new MySqlParameter("@ValorUnitario", produto.Valor_Unitario)
-        //    );
+                continue;
+            }
 
-        //    this.dbConnection.Close();
+            if (FilterProdutos.Count == 0) return produtos;
+            else return FilterProdutos;
+        }
 
-        //    return new Produto(Convert.ToInt32(scalar), produto.Nome, produto.Valor_Unitario);
-        //}
-
-        //public Produto UpdateProduto(Produto produto) {
-        //    this.dbConnection.Open();
-
-        //    this.dbConnection.ExecuteNonQuery(
-        //        "UPDATE `Produto` SET " +
-        //        "`Nome` = @Nome, `Valor Unitario` = @ValorUnitario " +
-        //        "WHERE (`Id` = @Id);",
-        //        new MySqlParameter("@Id", produto.Id),
-        //        new MySqlParameter("@Nome", produto.Nome),
-        //        new MySqlParameter("@ValorUnitario", produto.Valor_Unitario)
-        //    );
-
-        //    this.dbConnection.Close();
-
-        //    return produto;
-        //}
-
-        //public Produto SetImage(Produto produto, Arquivo arquivo)
-        //{
-        //    this.dbConnection.Open();
-
-        //    this.dbConnection.ExecuteNonQuery(
-        //        "UPDATE `Produto` SET " +
-        //        "`Imagem` = @Imagem " +
-        //        "WHERE (`Id` = @Id);",
-        //        new MySqlParameter("@Id", produto.Id),
-        //        new MySqlParameter("@Imagem", arquivo.Id)
-        //    );
-
-        //    this.dbConnection.Close();
-
-        //    produto.Imagem = arquivo;
-
-        //    return produto;
-        //}
-
-        //public List<Produto> ListProduto()
-        //{
-        //    List<Produto> produtos = new List<Produto>();
-        //    MySqlDataReader reader = null;
-
-        //    this.dbConnection.Open();
-
-        //    reader = this.dbConnection.ExecuteReader("SELECT * FROM `Produto`;");
-
-        //    while(reader.Read()) {
-        //        Arquivo imagem = null;
-        //        if (DBNull.Value.Equals(reader["Imagem"]) == false) {
-        //            long imagem_id = reader.GetInt64("Imagem");
-
-        //            if (imagem_id > 0)
-        //                imagem = this.arquivoController.GetArquivoUsingId(imagem_id);
-        //        }
-
-        //        produtos.Add(
-        //            new Produto(
-        //                reader.GetInt64("Id"),
-        //                reader["Nome"].ToString(),
-        //                reader.GetDecimal("Valor Unitario")
-        //            )
-        //        );
-        //    }
-
-        //    this.dbConnection.Close();
-
-
-        //    return produtos;
-        //}
-
-        //public void DeleteProduto(Produto produto) {
-        //    this.dbConnection.Open();
-
-        //    this.dbConnection.ExecuteNonQuery(
-        //        "DELETE FROM `Produto` WHERE (`Id` = @Id);",
-        //        new MySqlParameter("@Id", produto.Id)
-        //    );
-
-        //    this.dbConnection.Close();
-        //}
-
-        #region refatorar
-        //public Produto GetProduto(int id) {
-        //    Exception err = null;
-        //    MySqlDataReader reader = null;
-
-        //    try {
-        //        this.dbConnection.Open();
-        //    } 
-
-        //    catch (MySqlException error) {
-        //        throw new Exception(LogController.WriteExceptionAndGetMessage(error), error.InnerException);
-        //    }
-
-        //    try {
-        //        reader = this.dbConnection.ExecuteReader(
-        //            "SELECT * FROM `Produto` WHERE (`Id` = @Id)", 
-        //            new MySqlParameter("@Id", id)
-        //        );
-        //    } 
-
-        //    catch (MySqlException error) {
-        //        err = new Exception(LogController.WriteExceptionAndGetMessage(error), error.InnerException);
-        //    }
-
-        //    try {
-        //        this.dbConnection.Close();
-        //    }
-
-        //    catch(MySqlException error) {
-        //        throw new Exception(LogController.WriteExceptionAndGetMessage(error), error.InnerException);
-        //    }
-
-        //    if (err != null) throw err;
-
-        //    while (reader.Read())
-        //    {
-        //        return new Produto(
-        //            reader.GetInt32("Id"),
-        //            reader["Nome"].ToString(),
-        //            reader.GetDecimal("Valor Unitario"),
-        //            this.arquivoController.GetArquivo(reader.GetInt32("Imagem"))
-        //        );
-        //    }
-
-        //    return null;
-        //}
-        #endregion
+        public static void ValidateFilterEvent(object sender, KeyPressEventArgs e, string field)
+        {
+            switch (field)
+            {
+                case "Id":
+                    if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+                    {
+                        e.Handled = true;
+                        MessageBox.Show("este campo aceita somente numero", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    break;
+                case "Nome": break;
+            }
+        }
     }
 }

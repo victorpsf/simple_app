@@ -11,8 +11,8 @@ namespace RecorteDeCoração.Model
         private long id;
         private string nome;
         private decimal valor_unitario;
-
         private Arquivo imagem;
+        private DateTime criado_em;
 
         public Produto()
         {
@@ -40,6 +40,10 @@ namespace RecorteDeCoração.Model
             this.imagem = imagem;
         }
 
+        public Produto(long id, string nome, decimal valor_unitario, Arquivo imagem, DateTime criado_em): this(id, nome, valor_unitario, imagem) {
+            this.criado_em = criado_em;
+        }
+
         public long Id
         {
             get { return this.id; } 
@@ -61,6 +65,11 @@ namespace RecorteDeCoração.Model
         {
             get { return this.imagem; }
             set { this.imagem = value; }
+        }
+
+        public DateTime CriadoEm {
+            get { return this.criado_em; }
+            set { this.criado_em = value; }
         }
     }
 }

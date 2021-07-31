@@ -96,8 +96,8 @@ namespace RecorteDeCoração.Forms
 
             PedidoForm pedido = new PedidoForm() { TopLevel = false, FormBorderStyle = FormBorderStyle.None };
 
-            //pedido.LoadData();
-            //pedido.ReloadGrid();
+            pedido.LoadData();
+            pedido.ReloadGrid();
 
             Cursor.Current = Cursors.Default;
 

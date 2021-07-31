@@ -8,60 +8,46 @@ namespace RecorteDeCoração.Model
 {
     class Pedido
     {
-        private int id;
+        private long id;
         private Cliente cliente;
         private DateTime data_entrega;
         private DateTime data_pedido;
+        private DateTime criado_em;
         private int status_pedido;
         private ProdutoPedido[] produto_pedido;
         private Financeiro[] valor_pago;
 
-        public Pedido()
-        {
+        public Pedido() {
 
         }
 
-        public Pedido(Cliente cliente, DateTime data_entrega, DateTime data_pedido, int status_pedido) :this()
-        {
+        public Pedido(long id) : this() {
+            this.id = id;
+        }
+
+        public Pedido(long id, Cliente cliente, DateTime data_entrega, DateTime data_pedido, int status_pedido) : this(id) {
             this.cliente = cliente;
             this.data_entrega = data_entrega;
             this.data_pedido = data_pedido;
             this.status_pedido = status_pedido;
         }
 
-        public Pedido(Cliente cliente, DateTime data_entrega, DateTime data_pedido, string status_pedido_label) : this(cliente, data_entrega, data_pedido, StatusPedido.GetId(status_pedido_label))
-        {
-
+        public Pedido(long id, Cliente cliente, DateTime data_entrega, DateTime data_pedido, int status_pedido, DateTime criado_em) : this(id, cliente, data_entrega, data_pedido, status_pedido) {
+            this.criado_em = criado_em;
         }
 
-        public Pedido(Cliente cliente, DateTime data_entrega, DateTime data_pedido, int status_pedido, ProdutoPedido[] produto_pedido, Financeiro[] valor_pago): this(cliente, data_entrega, data_pedido, status_pedido)
-        {
-            this.produto_pedido = produto_pedido;
-            this.valor_pago = valor_pago;
-        }
-
-        public Pedido(Cliente cliente, DateTime data_entrega, DateTime data_pedido, string status_pedido_label, ProdutoPedido[] produto_pedido, Financeiro[] valor_pago) : this(cliente, data_entrega, data_pedido, StatusPedido.GetId(status_pedido_label), produto_pedido, valor_pago)
-        {
-
-        }
-
-
-
-        public Pedido(int id, Cliente cliente, DateTime data_entrega, DateTime data_pedido, int status_pedido, ProdutoPedido[] produto_pedido, Financeiro[] valor_pago) : this(cliente, data_entrega, data_pedido, status_pedido, produto_pedido, valor_pago)
-        {
-            this.id = id;
-        }
-
-        public Pedido(int id, Cliente cliente, DateTime data_entrega, DateTime data_pedido, int status_pedido)
-        {
-            this.id = id;
+        public Pedido(Cliente cliente, DateTime data_entrega, DateTime data_pedido, int status_pedido) {
             this.cliente = cliente;
             this.data_entrega = data_entrega;
             this.data_pedido = data_pedido;
             this.status_pedido = status_pedido;
         }
 
-        public int Id
+        public Pedido(Cliente cliente, DateTime data_entrega, DateTime data_pedido, int status_pedido, ProdutoPedido[] produtoPedidos): this(cliente, data_entrega, data_pedido, status_pedido) {
+            this.produto_pedido = produtoPedidos;
+        }
+
+        public long Id
         {
             get { return this.id; }
         }
@@ -82,6 +68,11 @@ namespace RecorteDeCoração.Model
         {
             get { return this.data_pedido; }
             set { this.data_pedido = value; }
+        }
+
+        public DateTime Criado_Em {
+            get { return this.criado_em; }
+            set { this.criado_em = value; }
         }
 
         public int Status_Pedido

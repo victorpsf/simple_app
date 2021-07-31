@@ -12,7 +12,7 @@ using RecorteDeCoração.Model;
 using RecorteDeCoração.Source;
 using RecorteDeCoração.Controller;
 
-namespace RecorteDeCoração.Forms.Pedido
+namespace RecorteDeCoração.Forms.PedidoForms
 {
     public partial class PedidoClienteForm : Form
     {
@@ -47,6 +47,27 @@ namespace RecorteDeCoração.Forms.Pedido
             this.dataGridView1.Refresh();
         }
 
+        private Cliente GetCliente(int index)
+        {
+            try {
+                return this.listView[index];
+            } 
+            
+            catch (Exception error) {
+                LogController.WriteException(error);
+                return null;
+            }
+        }
+
+        private void SetInput(Cliente cliente) {
+            this.cliente = cliente;
+
+            this.label2.Text = this.cliente.Id.ToString();
+            this.label4.Text = this.cliente.Nome;
+            this.label6.Text = this.cliente.Email;
+            this.label8.Text = this.cliente.Telefone;
+        }
+
         public void ClearInput()
         {
             this.cliente = null;
@@ -60,35 +81,47 @@ namespace RecorteDeCoração.Forms.Pedido
         // back
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-
+            this.pedidoFormForm.CloseForm();
         }
 
         // search
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-
+            this.listView = ClienteController.Filter(this.dataSource, this.comboBox1.Text, this.textBox1.Text);
+            this.ReloadGrid();
         }
 
         // save
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-
+            if (this.cliente == null) return;
+            this.pedidoFormForm.SetCliente(this.cliente);
+            this.pedidoFormForm.CloseForm();
         }
 
         // clear
         private void pictureBox4_Click(object sender, EventArgs e)
         {
-
+            this.ClearInput();
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex < 0 && this.listView.Count < e.RowIndex) return;
+            Cliente cliente = this.GetCliente(e.RowIndex);
 
+            if (cliente == null) return;
+            this.SetInput(cliente);
         }
 
         private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
         {
+            this.textBox1.Text = "";
+        }
 
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ClienteController.ValidateFilterEvent(sender, e, this.comboBox1.Text);
         }
     }
 }

@@ -20,6 +20,11 @@ namespace RecorteDeCoração.Model
         public const string ENTREGUE_LABEL = "Entregue";
         public const string CANCELADO_LABEL = "Cancelado";
 
+        public static string DefaultLabel()
+        {
+            return SOLICITADO_LABEL;
+        }
+
         public static string GetLabel(int id)
         {
             switch(id)

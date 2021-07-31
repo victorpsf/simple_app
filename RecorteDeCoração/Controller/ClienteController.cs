@@ -5,6 +5,8 @@ using RecorteDeCoração.Model;
 using RecorteDeCoração.Connection;
 using System.Windows.Forms;
 
+using System.Text.RegularExpressions;
+
 using MySql.Data.MySqlClient;
 
 namespace RecorteDeCoração.Controller
@@ -112,6 +114,53 @@ namespace RecorteDeCoração.Controller
             connection.Close();
 
             return cliente;
+        }
+
+        public static List<Cliente> Filter(List<Cliente> clientes, string field, string value)
+        {
+            List<Cliente> FilterClientes = new List<Cliente>();
+
+            foreach (Cliente cliente in clientes) {
+                if (field == "Id") {
+                    if (cliente.Id == Convert.ToInt64(value))
+                        FilterClientes.Add(cliente);
+                    continue;
+                }
+
+                string current_value = "";
+                if (field == "Nome") current_value = cliente.Nome;
+                if (field == "Email") current_value = cliente.Email;
+                if (field == "Telefone") current_value = cliente.Telefone;
+
+                if (Regex.Match(current_value.ToLower(), @"" + value.ToLower() + "").Success)
+                    FilterClientes.Add(cliente);
+
+                continue;
+            }
+
+            if (FilterClientes.Count == 0) return clientes;
+            else return FilterClientes;
+        }
+
+        public static void ValidateFilterEvent(object sender, KeyPressEventArgs e, string field)
+        {
+            switch (field)
+            {
+                case "Id":
+                    if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)) {
+                        e.Handled = true;
+                        MessageBox.Show("este campo aceita somente numero", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    break;
+                case "Telefone":
+                    if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)) {
+                        e.Handled = true;
+                        MessageBox.Show("este campo aceita somente numero", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    break;
+                case "Nome":
+                case "Email": break;
+            }
         }
     }
 }

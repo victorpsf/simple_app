@@ -28,3 +28,6 @@ C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\obj\Debug\Reco
 C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\obj\Debug\RecorteDeCoração.Forms.ClienteForm.resources
 C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\obj\Debug\RecorteDeCoração.Forms.ProdutoForm.resources
 C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\obj\Debug\RecorteDeCoração.Forms.PedidoForm.resources
+C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\obj\Debug\RecorteDeCoração.Forms.PedidoForms.PedidoClienteForm.resources
+C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\obj\Debug\RecorteDeCoração.Forms.PedidoForms.PedidoFormForm.resources
+C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\obj\Debug\RecorteDeCoração.Forms.PedidoForms.ProdutoPedidoForm.resources

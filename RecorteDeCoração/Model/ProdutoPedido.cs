@@ -8,7 +8,7 @@ namespace RecorteDeCoração.Model
 {
     class ProdutoPedido
     {
-        private int id;
+        private long id;
         private Produto produto;
         private Pedido pedido;
         private int quantidade;
@@ -31,12 +31,12 @@ namespace RecorteDeCoração.Model
             this.pedido = pedido;
         }
 
-        public ProdutoPedido(int id, Produto produto, Pedido pedido, int quantidade) : this(produto, pedido, quantidade)
+        public ProdutoPedido(long id, Produto produto, Pedido pedido, int quantidade) : this(produto, pedido, quantidade)
         {
             this.id = id;
         }
 
-        public ProdutoPedido(int id, Produto produto, Pedido pedido, int quantidade, decimal valor_total, DateTime criado_em) : this(id, produto, pedido, quantidade)
+        public ProdutoPedido(long id, Produto produto, Pedido pedido, int quantidade, decimal valor_total, DateTime criado_em) : this(id, produto, pedido, quantidade)
         {
             this.valor_total = valor_total;
             this.criado_em = criado_em;
@@ -52,7 +52,7 @@ namespace RecorteDeCoração.Model
             return this.quantidade * this.produto.Valor_Unitario;
         }
 
-        public int Id
+        public long Id
         {
             get { return this.id; }
         }
