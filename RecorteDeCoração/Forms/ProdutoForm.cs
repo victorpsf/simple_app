@@ -65,7 +65,21 @@ namespace RecorteDeCoração.Forms
         {
             this.dataGridView1.DataSource = null;
             this.dataGridView1.Refresh();
-            this.dataGridView1.DataSource = this.listView;
+
+            List<dynamic> view = new List<dynamic>();
+            foreach (Produto produto in this.listView)
+            {
+                dynamic value = new
+                {
+                    Id = produto.Id,
+                    Nome = produto.Nome,
+                    Valor = produto.Valor_Unitario,
+                    Imagem = (produto.Imagem != null) ? produto.Imagem.Nome : null,
+                    Criado = produto.CriadoEm
+                };
+                view.Add(value);
+            }
+            this.dataGridView1.DataSource = view;
             this.dataGridView1.Refresh();
         }
 
@@ -189,6 +203,9 @@ namespace RecorteDeCoração.Forms
                 this.produto = ProdutoController.SetImagem(this.produto, arquivo);
                 this.pictureBox6.Image = FileController.BytesToBitmap(this.produto.Imagem.Binario, this.pictureBox6.Width, this.pictureBox6.Height);
                 MessageBox.Show("Imagem adicionada!");
+
+                this.LoadData();
+                this.ReloadGrid();
             } 
             
             catch (Exception error) {
@@ -383,10 +400,9 @@ namespace RecorteDeCoração.Forms
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0 || this.listView.Count < e.RowIndex) return;
+            if (e.RowIndex < 0 || e.RowIndex > this.listView.Count) return;
             Produto produto = this.GetValueInList(e.RowIndex);
             if (produto == null) return;
-
             this.InputValues(produto);
         }
         #endregion

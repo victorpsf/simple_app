@@ -42,15 +42,21 @@ namespace RecorteDeCoração.Forms.PedidoForms
             this.pedidoForm = pedidoForm;
             InitializeComponent();
             this.Initialize();
-            if (pedido != null && typeof(Pedido).IsInstanceOfType(pedido))
-                this.pedido = pedido as Pedido;
+            if (pedido != null && typeof(Pedido).IsInstanceOfType(pedido)) {
+                this.SetPedido(pedido as Pedido);
+            }
         }
 
+        /// <summary>
+        ///     
+        /// </summary>
+        /// <param name="pedido"></param>
         private void SetPedido(Pedido pedido)
         {
             this.pedido = pedido;
 
             this.label2.Text = this.pedido.Id.ToString();
+            this.LabelNome.Text = this.pedido.Cliente.Nome;
 
             this.pedidoProdutos = new List<ProdutoPedido>(pedido.Produto_Pedido);
             this.ReloadGrid();
@@ -59,6 +65,74 @@ namespace RecorteDeCoração.Forms.PedidoForms
 
             this.dateTimePicker1.Value = this.pedido.Data_Pedido;
             this.dateTimePicker2.Value = this.pedido.Data_Entrega;
+        }
+
+        /// <summary>
+        ///     atualiza produto pedido ou remove
+        /// </summary>
+        /// 
+        /// <param name="type">update delete</param>
+        /// <param name="produtoPedido"></param>
+        /// <param name="index"></param>
+        public void ChangeProdutoPedido(string type, dynamic produtoPedido)
+        {
+            int index = -1;
+
+            switch(type)
+            {
+                case "append":
+                    index = this.FindProdutopedido(this.pedidoProdutos, produtoPedido, "produto.id");
+                    if (index >= 0) {
+                        this.pedidoProdutos[index].Quantidade += (produtoPedido as ProdutoPedido).Quantidade;
+                    } 
+
+                    else {
+                        this.pedidoProdutos.Add(produtoPedido);
+                    }
+                    break;
+                case "update":
+                    index = this.FindProdutopedido(this.pedidoProdutos, produtoPedido, "produto.id");
+                    if (index >= 0) {
+                        this.pedidoProdutos[index] = produtoPedido;
+                    }
+                    break;
+                case "delete":
+                    index = this.FindProdutopedido(this.pedidoProdutos, produtoPedido, "produto.id");
+                    if (index >= 0) {
+                        this.pedidoProdutos.RemoveAt(index);
+                    }
+                    break;
+                default:
+                    return;
+            } 
+
+            this.ReloadGrid();
+        }
+
+        private int FindProdutopedido(List<ProdutoPedido> produtoPedidos, ProdutoPedido produtoPedido, string field = "id")
+        {
+            int index = -1;
+
+            for(int x = 0; x < produtoPedidos.Count; x++) {
+                switch(field)
+                {
+                    case "id":
+                        if (produtoPedidos[x].Id == produtoPedido.Id) {
+                            index = x;
+                        }
+                        break;
+
+                    case "produto.id":
+                        if (produtoPedidos[x].Produto.Id == produtoPedido.Produto.Id) {
+                            index = x;
+                        }
+                        break;
+                }
+
+                if (index >= 0) break;
+            }
+
+            return index;
         }
 
         #region controlles_internos
@@ -75,7 +149,7 @@ namespace RecorteDeCoração.Forms.PedidoForms
 
         public void SetPedidoProduto(dynamic pedidoProduto)
         {
-            this.pedidoProdutos.Add(pedidoProduto as ProdutoPedido);
+            this.ChangeProdutoPedido("append", pedidoProduto);
             this.ReloadGrid();
         }
 
@@ -85,7 +159,9 @@ namespace RecorteDeCoração.Forms.PedidoForms
         private void Initialize()
         {
             this.panel1.Controls.Add(this.tableLayoutPanel1);
+            this.comboBox1.Text = "Id";
 
+            this.comboBox2.Items.Clear();
             this.comboBox2.Items.AddRange(StatusPedido.GetLabels());
             this.comboBox2.Text = StatusPedido.DefaultLabel();
 
@@ -323,7 +399,8 @@ namespace RecorteDeCoração.Forms.PedidoForms
         /// <param name="e"></param>
         private void pictureBox5_Click(object sender, EventArgs e)
         {
-
+            RemoveProdutoPedidoForm removeProdutoPedidoForm = new RemoveProdutoPedidoForm(this, this.pedidoProdutos);
+            removeProdutoPedidoForm.Show();
         }
 
         #region eventos_formulario_atual
@@ -360,9 +437,11 @@ namespace RecorteDeCoração.Forms.PedidoForms
                         this.dateTimePicker2.Value,
                         // dateTimePicker1 data pedido
                         this.dateTimePicker1.Value,
-                        StatusPedido.GetId(this.comboBox1.Text)
+                        StatusPedido.GetId(this.comboBox2.Text)
                     )
                 );
+
+                this.cliente = null;
 
                 List<ProdutoPedido> produtoPedidos = new List<ProdutoPedido>();
                 foreach(ProdutoPedido produtoPedido in this.pedidoProdutos) {
@@ -379,11 +458,55 @@ namespace RecorteDeCoração.Forms.PedidoForms
 
                 pedido.Produto_Pedido = produtoPedidos.ToArray();
                 this.SetPedido(pedido);
+                this.pedidoForm.ReloadGrid();
             }
 
             catch (Exception error) {
                 LogController.WriteException(error);
                 MessageBox.Show("Não foi possível criar o pedido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+
+        private void UpdatePedido()
+        {
+            if (this.cliente != null)
+            {
+                DialogResult result = MessageBox.Show("Cliente do pedido foi alterado, deseja realmente alterar ?", "question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (DialogResult.No == result) {
+                    this.cliente = null;
+                    this.SetPedido(this.pedido);
+                    return;
+                }
+            }
+
+            if (this.pedidoProdutos.Count == 0) {
+                MessageBox.Show("Sem produtos para o pedido, primeiro adicione");
+                return;
+            }
+
+            if (this.cliente != null) this.pedido.Cliente = this.cliente;
+            this.cliente = null;
+            
+            try {
+                // dateTimePicker2 data entrega
+                this.pedido.Data_Entrega = this.dateTimePicker2.Value;
+                // dateTimePicker1 data pedido
+                this.pedido.Data_Pedido = this.dateTimePicker1.Value;
+
+                MessageBox.Show(this.comboBox1.Text);
+                this.pedido.Status_Pedido = StatusPedido.GetId(this.comboBox2.Text);
+
+                PedidoController.Update(this.pedido);
+
+                this.SetPedido(this.pedido);
+                this.pedidoForm.ReloadGrid();
+            }
+
+            catch (Exception error) {
+                LogController.WriteException(error);
+                LogController.ErrorMessage("Error", "Não foi possível criar o pedido");
                 return;
             }
         }
@@ -400,6 +523,8 @@ namespace RecorteDeCoração.Forms.PedidoForms
 
             if (this.pedido == null)
                 this.CreatePedido();
+            else
+                this.UpdatePedido();
 
             Cursor.Current = Cursors.Default;
         }

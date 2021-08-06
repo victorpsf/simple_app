@@ -14,7 +14,7 @@ namespace RecorteDeCoração.Connection
 
         public DbConnection()
         {
-            this.clientConnection = new MySqlConnection(Configuration.ReadFile().ConnectionString());
+            this.clientConnection = new MySqlConnection(DbConfiguration.Init().ConnectionString());
         }
 
         public void Open()

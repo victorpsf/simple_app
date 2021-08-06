@@ -101,5 +101,34 @@ namespace RecorteDeCoração.Controller
 
             return produtoPedidos.ToArray();
         }
+
+        public static void Delete(ProdutoPedido produtoPedido)
+        {
+            DbConnection connection = new DbConnection();
+
+            connection.Open();
+
+            connection.ExecuteNonQuery(
+                "DELETE FROM `Produto_Pedido` WHERE (`Id` = @Id);",
+                new MySqlParameter("@Id", produtoPedido.Id)
+            );
+
+            connection.Close();
+        }
+
+        public static void Update(ProdutoPedido produtoPedido)
+        {
+            DbConnection connection = new DbConnection();
+
+            connection.Open();
+
+            connection.ExecuteNonQuery(
+                "UPDATE `Produto_Pedido` SET `Quantidade` = @Quantidade WHERE (`Id` = @Id);",
+                new MySqlParameter("@Id", produtoPedido.Id),
+                new MySqlParameter("@Quantidade", produtoPedido.Quantidade)
+            );
+
+            connection.Close();
+        }
     }
 }

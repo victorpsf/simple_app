@@ -104,7 +104,8 @@ namespace RecorteDeCoração.Controller
                         reader.GetInt64("Id"),
                         reader["Nome"].ToString(),
                         reader.GetDecimal("Valor Unitario"),
-                        arquivo
+                        arquivo,
+                        reader.GetDateTime("Criado Em")
                     )
                 );
             }

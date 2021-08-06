@@ -159,8 +159,9 @@ namespace RecorteDeCoração.Forms
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(194, 50);
             this.button5.TabIndex = 4;
-            this.button5.Text = "Financeiro";
+            this.button5.Text = "Arquivo";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // MainForm
             // 

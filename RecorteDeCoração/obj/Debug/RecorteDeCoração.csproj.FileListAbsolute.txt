@@ -1,7 +1,6 @@
 C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\bin\Debug\RecorteDeCoração.exe.config
 C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\bin\Debug\RecorteDeCoração.exe
 C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\bin\Debug\RecorteDeCoração.pdb
-C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\obj\Debug\RecorteDeCoração.csproj.AssemblyReference.cache
 C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\obj\Debug\RecorteDeCoração.Properties.Resources.resources
 C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\obj\Debug\RecorteDeCoração.csproj.GenerateResource.cache
 C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\obj\Debug\RecorteDeCoração.csproj.CoreCompileInputs.cache
@@ -31,3 +30,7 @@ C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\obj\Debug\Reco
 C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\obj\Debug\RecorteDeCoração.Forms.PedidoForms.PedidoClienteForm.resources
 C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\obj\Debug\RecorteDeCoração.Forms.PedidoForms.PedidoFormForm.resources
 C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\obj\Debug\RecorteDeCoração.Forms.PedidoForms.ProdutoPedidoForm.resources
+C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\obj\Debug\RecorteDeCoração.Forms.FinanceiroForm.resources
+C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\obj\Debug\RecorteDeCoração.Forms.PedidoForms.RemoveProdutoPedidoForm.resources
+C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\obj\Debug\RecorteDeCoração.csproj.AssemblyReference.cache
+C:\Users\victo\source\repos\RecorteDeCoração\RecorteDeCoração\obj\Debug\RecorteDeCoração.Forms.ArquivoForm.resources

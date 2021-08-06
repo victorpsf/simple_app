@@ -15,7 +15,6 @@ namespace RecorteDeCoração.Model
         private DateTime criado_em;
         private int status_pedido;
         private ProdutoPedido[] produto_pedido;
-        private Financeiro[] valor_pago;
 
         public Pedido() {
 
@@ -45,6 +44,18 @@ namespace RecorteDeCoração.Model
 
         public Pedido(Cliente cliente, DateTime data_entrega, DateTime data_pedido, int status_pedido, ProdutoPedido[] produtoPedidos): this(cliente, data_entrega, data_pedido, status_pedido) {
             this.produto_pedido = produtoPedidos;
+        }
+
+        public decimal ValorTotalPedido()
+        {
+            if (this.produto_pedido == null) return 0;
+            decimal ValorTotal = 0;
+
+            foreach(ProdutoPedido produtoPedido in this.produto_pedido) {
+                ValorTotal += produtoPedido.ValorPedidoProduto(true);
+            }
+
+            return ValorTotal;
         }
 
         public long Id
@@ -85,12 +96,6 @@ namespace RecorteDeCoração.Model
         {
             get { return this.produto_pedido; }
             set { this.produto_pedido = value; }
-        }
-
-        public Financeiro[] Valor_Pago
-        {
-            get { return this.valor_pago; }
-            set { this.valor_pago = value; }
         }
     }
 }

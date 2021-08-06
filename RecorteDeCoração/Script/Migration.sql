@@ -2,13 +2,15 @@ USE `recorte_de_coracao`;
 
 SET FOREIGN_KEY_CHECKS=0;
 
-# 55081995611216
+#
 DROP TABLE IF EXISTS `Arquivo`;
 DROP TABLE IF EXISTS `Produto_Pedido`;
 DROP TABLE IF EXISTS `Pedido`;
 DROP TABLE IF EXISTS `Cliente`;
 DROP TABLE IF EXISTS `Produto`;
 DROP TABLE IF EXISTS `Pagamento`;
+DROP TABLE IF EXISTS `Pagamento_Comprovante`;
+DROP TABLE IF EXISTS `Pagamento_Pedido`;
 
 CREATE TABLE IF NOT EXISTS `Arquivo` (
 	`Id` BIGINT NOT NULL AUTO_INCREMENT,
@@ -66,10 +68,27 @@ CREATE TABLE IF NOT EXISTS `Pagamento` (
 	`Id` BIGINT NOT NULL AUTO_INCREMENT,
     `Valor` DECIMAL(18,2) NOT NULL,
     `Status` INT NOT NULL, 
-    `Pedido` BIGINT,
-    `Comprovante` BIGINT,
+    `Informativo` TEXT DEFAULT NULL,
     `Criado em` DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY(`Comprovante`) REFERENCES `Arquivo`(`Id`) ON DELETE SET NULL,
+    PRIMARY KEY(`Id`)
+);
+
+CREATE TABLE IF NOT EXISTS `Pagamento_Comprovante` (
+	`Id` BIGINT NOT NULL AUTO_INCREMENT,
+    `Pagamento` BIGINT NOT NULL,
+    `Arquivo` BIGINT,
+
+	FOREIGN KEY(`Pagamento`) REFERENCES `Pagamento`(`Id`) ON DELETE RESTRICT,
+    FOREIGN KEY(`Arquivo`) REFERENCES `Arquivo`(`Id`) ON DELETE CASCADE,
+    PRIMARY KEY(`Id`)
+);
+
+CREATE TABLE IF NOT EXISTS `Pagamento_Pedido` (
+	`Id` BIGINT NOT NULL AUTO_INCREMENT,
+    `Pagamento` BIGINT NOT NULL,
+    `Pedido` BIGINT NOT NULL,
+
+	FOREIGN KEY(`Pagamento`) REFERENCES `Pagamento`(`Id`) ON DELETE RESTRICT,
     FOREIGN KEY(`Pedido`) REFERENCES `Pedido`(`Id`) ON DELETE RESTRICT,
     PRIMARY KEY(`Id`)
 );

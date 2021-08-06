@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using RecorteDeCoração.Model;
 using RecorteDeCoração.Connection;
 using RecorteDeCoração.Source;
+using System.Windows.Forms;
 
 using MySql.Data.MySqlClient;
 
@@ -89,6 +90,64 @@ namespace RecorteDeCoração.Controller
             }
 
             return pedidos;
+        }
+
+        public static bool DeleteOpen(Pedido pedido)
+        {
+            DbConnection connection = new DbConnection();
+            long qtd = 0;
+
+            connection.Open();
+
+            MySqlDataReader reader = connection.ExecuteReader(
+                "SELECT " +
+                    "COUNT(*) as `qtd` " +
+                "FROM `Pedido` " +
+                    "INNER JOIN `Pagamento_Pedido` " +
+                        "ON `Pagamento_Pedido`.`Pedido` = `Pedido`.`Id` " +
+                "WHERE (`Pedido`.`Id` = @PedidoId);",
+                new MySqlParameter("@PedidoId", pedido.Id)
+            );
+
+            if (reader.Read()) {
+                qtd = reader.GetInt64("qtd");
+            }
+
+            connection.Close();
+
+            MessageBox.Show(qtd.ToString());
+            return !(qtd > 0);
+        }
+
+        public static void Delete(Pedido pedido)
+        {
+            DbConnection connection = new DbConnection();
+
+            connection.Open();
+
+            connection.ExecuteNonQuery(
+                "DELETE FROM `Pedido` WHERE (`Id` = @PedidoId);",
+                new MySqlParameter("@PedidoId", pedido.Id)
+            );
+
+            connection.Close();
+        }
+
+        public static void Update(Pedido pedido) {
+            DbConnection connection = new DbConnection();
+
+            connection.Open();
+
+            connection.ExecuteNonQuery(
+                "UPDATE `Pedido` SET `Cliente` = @ClienteId, `Data Entrega` = @DataEntrega, `Data Pedido` = @DataPedido, `Status` = @Status WHERE (`Id` = @PedidoId);",
+                new MySqlParameter("@PedidoId", pedido.Id),
+                new MySqlParameter("@ClienteId", pedido.Cliente.Id),
+                new MySqlParameter("@DataEntrega", pedido.Data_Entrega),
+                new MySqlParameter("@DataPedido", pedido.Data_Pedido),
+                new MySqlParameter("@Status", pedido.Status_Pedido)
+            );
+
+            connection.Close();
         }
     }
 }

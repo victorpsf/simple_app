@@ -42,8 +42,10 @@ namespace RecorteDeCoração.Model
             this.criado_em = criado_em;
         }
 
-        public decimal ValorPedidoProduto()
+        public decimal ValorPedidoProduto(bool use_internal = false)
         {
+            if (use_internal) return this.valor_total;
+
             if (this.produto == null)
             {
                 return 0;

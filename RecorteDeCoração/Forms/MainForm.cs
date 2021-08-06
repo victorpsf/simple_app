@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using RecorteDeCoração.Source;
+
 namespace RecorteDeCoração.Forms
 {
     public partial class MainForm : Form
@@ -103,6 +105,22 @@ namespace RecorteDeCoração.Forms
 
             this.UnsetForm();
             this.currentForm = pedido;
+            this.SetForm();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+
+            ArquivoForm arquivo = new ArquivoForm() { TopLevel = false, FormBorderStyle = FormBorderStyle.None };
+
+            //arquivo.LoadData();
+            //arquivo.ReloadGrid();
+
+            Cursor.Current = Cursors.Default;
+
+            this.UnsetForm();
+            this.currentForm = arquivo;
             this.SetForm();
         }
     }
