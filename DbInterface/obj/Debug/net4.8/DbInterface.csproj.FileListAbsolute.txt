@@ -1,0 +1,9 @@
+C:\Users\victo\source\repos\RecorteDeCoracao\DbInterface\bin\Debug\net4.8\DbInterface.dll
+C:\Users\victo\source\repos\RecorteDeCoracao\DbInterface\bin\Debug\net4.8\DbInterface.pdb
+C:\Users\victo\source\repos\RecorteDeCoracao\DbInterface\obj\Debug\net4.8\DbInterface.csproj.AssemblyReference.cache
+C:\Users\victo\source\repos\RecorteDeCoracao\DbInterface\obj\Debug\net4.8\DbInterface.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\victo\source\repos\RecorteDeCoracao\DbInterface\obj\Debug\net4.8\DbInterface.AssemblyInfoInputs.cache
+C:\Users\victo\source\repos\RecorteDeCoracao\DbInterface\obj\Debug\net4.8\DbInterface.AssemblyInfo.cs
+C:\Users\victo\source\repos\RecorteDeCoracao\DbInterface\obj\Debug\net4.8\DbInterface.csproj.CoreCompileInputs.cache
+C:\Users\victo\source\repos\RecorteDeCoracao\DbInterface\obj\Debug\net4.8\DbInterface.dll
+C:\Users\victo\source\repos\RecorteDeCoracao\DbInterface\obj\Debug\net4.8\DbInterface.pdb

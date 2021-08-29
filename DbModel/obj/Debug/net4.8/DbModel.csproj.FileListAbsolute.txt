@@ -1,0 +1,9 @@
+C:\Users\victo\source\repos\RecorteDeCoracao\DbModel\bin\Debug\net4.8\DbModel.dll
+C:\Users\victo\source\repos\RecorteDeCoracao\DbModel\bin\Debug\net4.8\DbModel.pdb
+C:\Users\victo\source\repos\RecorteDeCoracao\DbModel\obj\Debug\net4.8\DbModel.csproj.AssemblyReference.cache
+C:\Users\victo\source\repos\RecorteDeCoracao\DbModel\obj\Debug\net4.8\DbModel.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\victo\source\repos\RecorteDeCoracao\DbModel\obj\Debug\net4.8\DbModel.AssemblyInfoInputs.cache
+C:\Users\victo\source\repos\RecorteDeCoracao\DbModel\obj\Debug\net4.8\DbModel.AssemblyInfo.cs
+C:\Users\victo\source\repos\RecorteDeCoracao\DbModel\obj\Debug\net4.8\DbModel.csproj.CoreCompileInputs.cache
+C:\Users\victo\source\repos\RecorteDeCoracao\DbModel\obj\Debug\net4.8\DbModel.dll
+C:\Users\victo\source\repos\RecorteDeCoracao\DbModel\obj\Debug\net4.8\DbModel.pdb

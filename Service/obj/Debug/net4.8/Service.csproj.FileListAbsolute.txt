@@ -1,0 +1,9 @@
+C:\Users\victo\source\repos\RecorteDeCoracao\Service\bin\Debug\net4.8\Service.dll
+C:\Users\victo\source\repos\RecorteDeCoracao\Service\bin\Debug\net4.8\Service.pdb
+C:\Users\victo\source\repos\RecorteDeCoracao\Service\obj\Debug\net4.8\Service.csproj.AssemblyReference.cache
+C:\Users\victo\source\repos\RecorteDeCoracao\Service\obj\Debug\net4.8\Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\victo\source\repos\RecorteDeCoracao\Service\obj\Debug\net4.8\Service.AssemblyInfoInputs.cache
+C:\Users\victo\source\repos\RecorteDeCoracao\Service\obj\Debug\net4.8\Service.AssemblyInfo.cs
+C:\Users\victo\source\repos\RecorteDeCoracao\Service\obj\Debug\net4.8\Service.csproj.CoreCompileInputs.cache
+C:\Users\victo\source\repos\RecorteDeCoracao\Service\obj\Debug\net4.8\Service.dll
+C:\Users\victo\source\repos\RecorteDeCoracao\Service\obj\Debug\net4.8\Service.pdb
