@@ -6,28 +6,27 @@ using System.Threading.Tasks;
 
 namespace DbModel
 {
-    public class PagamentoPedidoModel
+    class ComprovantePagamentoModel
     {
         public int Id
         { get; set; }
 
-        public PedidoModel Pedido
+        public int EntidadeId
         { get; set; }
 
-        public EntradaFinanceiraModel EntradaFinanceira
+        public string EntidadeName
+        { get; set; }
+
+        public ArquivoModel Arquivo
         { get; set; }
 
         public DateTime? CriadoEm
-        {
-            get; set;
-        }
+        { get; set; }
+
         public DateTime? AtualizadoEm
-        {
-            get; set;
-        }
+        { get; set; }
+
         public DateTime? DeletadoEm
-        {
-            get; set;
-        }
+        { get; set; }
     }
 }

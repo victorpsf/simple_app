@@ -6,28 +6,24 @@ using System.Threading.Tasks;
 
 namespace DbModel
 {
-    public class PagamentoPedidoModel
+    class GaleriaProdutoModel
     {
         public int Id
         { get; set; }
 
-        public PedidoModel Pedido
+        public ProdutoModel Produto
         { get; set; }
 
-        public EntradaFinanceiraModel EntradaFinanceira
+        public ArquivoModel Arquivo
         { get; set; }
 
         public DateTime? CriadoEm
-        {
-            get; set;
-        }
+        { get; set; }
+
         public DateTime? AtualizadoEm
-        {
-            get; set;
-        }
+        { get; set; }
+
         public DateTime? DeletadoEm
-        {
-            get; set;
-        }
+        { get; set; }
     }
 }
