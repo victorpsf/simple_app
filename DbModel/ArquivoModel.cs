@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DbModel
 {
-    public class PessoaModel
+    class ArquivoModel
     {
         public int Id
         { get; set; }
@@ -14,22 +14,16 @@ namespace DbModel
         public string Nome
         { get; set; }
 
-        public int Cpf
+        public string Extensao
         { get; set; }
 
-        public int? Rg
+        public long Tamanho
         { get; set; }
 
-        public DateTime DataNascimento
+        public byte[] Binario
         { get; set; }
 
         public DateTime? CriadoEm
-        { get; set; }
-
-        public DateTime? AtualizadoEm
-        { get; set; }
-
-        public DateTime? DeletadoEm
         { get; set; }
     }
 }

@@ -6,27 +6,18 @@ using System.Threading.Tasks;
 
 namespace DbModel
 {
-    public class PessoaModel
+    class HistoricoPrecoModel
     {
         public int Id
         { get; set; }
 
-        public string Nome
+        public decimal Valor
         { get; set; }
 
-        public int Cpf
-        { get; set; }
-
-        public int? Rg
-        { get; set; }
-
-        public DateTime DataNascimento
+        public ProdutoModel Produto
         { get; set; }
 
         public DateTime? CriadoEm
-        { get; set; }
-
-        public DateTime? AtualizadoEm
         { get; set; }
 
         public DateTime? DeletadoEm

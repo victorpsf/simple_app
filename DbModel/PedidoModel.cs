@@ -6,21 +6,21 @@ using System.Threading.Tasks;
 
 namespace DbModel
 {
-    public class PessoaModel
+    public class PedidoModel
     {
         public int Id
         { get; set; }
 
-        public string Nome
+        public int Status
         { get; set; }
 
-        public int Cpf
+        public DateTime DataPedido
         { get; set; }
 
-        public int? Rg
+        public DateTime DataEntrega
         { get; set; }
 
-        public DateTime DataNascimento
+        public ClienteModel Cliente
         { get; set; }
 
         public DateTime? CriadoEm

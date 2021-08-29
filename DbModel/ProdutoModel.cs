@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DbModel
 {
-    public class PessoaModel
+    public class ProdutoModel
     {
         public int Id
         { get; set; }
@@ -14,13 +14,7 @@ namespace DbModel
         public string Nome
         { get; set; }
 
-        public int Cpf
-        { get; set; }
-
-        public int? Rg
-        { get; set; }
-
-        public DateTime DataNascimento
+        public decimal Valor
         { get; set; }
 
         public DateTime? CriadoEm
