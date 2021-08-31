@@ -82,6 +82,49 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\ClienteFormView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ClienteFormView.Designer.cs">
+      <DependentUpon>ClienteFormView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ClienteDataView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ClienteDataView.Designer.cs">
+      <DependentUpon>ClienteDataView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MainView.Designer.cs">
+      <DependentUpon>MainView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ModeloDataView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ModeloDataView.Designer.cs">
+      <DependentUpon>ModeloDataView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ModeloFormView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ModeloFormView.Designer.cs">
+      <DependentUpon>ModeloFormView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ProdutoDataView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ProdutoDataView.Designer.cs">
+      <DependentUpon>ProdutoDataView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ProdutoFormView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ProdutoFormView.Designer.cs">
+      <DependentUpon>ProdutoFormView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ViewInterface.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -90,7 +133,29 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\ClienteDataView.resx">
+      <DependentUpon>ClienteDataView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ClienteFormView.resx">
+      <DependentUpon>ClienteFormView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MainView.resx">
+      <DependentUpon>MainView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ModeloDataView.resx">
+      <DependentUpon>ModeloDataView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ModeloFormView.resx">
+      <DependentUpon>ModeloFormView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ProdutoDataView.resx">
+      <DependentUpon>ProdutoDataView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ProdutoFormView.resx">
+      <DependentUpon>ProdutoFormView.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -106,16 +171,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="View\" />
+    <None Include="Resources\Reorte D%27Coração Wallpaper.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Controller\Controller.csproj">
       <Project>{2cc6f40e-5fbc-4f82-abf6-1b3ef160fe27}</Project>
       <Name>Controller</Name>
-    </ProjectReference>
-    <ProjectReference Include="DbInterface\DbInterface.csproj">
-      <Project>{7ffc2b7d-d1ec-46c8-82a0-c87a20147987}</Project>
-      <Name>DbInterface</Name>
     </ProjectReference>
     <ProjectReference Include="DbModel\DbModel.csproj">
       <Project>{ce788010-9283-4a07-a403-2514a7796d1b}</Project>
@@ -129,6 +190,42 @@
       <Project>{b5f53417-2c84-4660-854a-e82ae20b0bc3}</Project>
       <Name>Service</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cliente.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Produto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\checklist.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Semtitulo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Modelo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RecorteDeCoracaoLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\create_r.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refresh_rec.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loupe_r.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\backd_rec.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\viewd_r.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trash_r.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

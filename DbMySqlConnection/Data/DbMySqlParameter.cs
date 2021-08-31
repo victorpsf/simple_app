@@ -1,44 +1,41 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 using MySql.Data.MySqlClient;
-using DbMySqlConnection.Constants;
 
 namespace DbMySqlConnection.Data
 {
     public class DbMySqlParameter
     {
-        private string Column;
-        private object Data;
         private MySqlParameter parameter;
-        
-        public DbMySqlParameter(string column, object data)
-        {
-            this.Column = column;
-            this.Data = data;
 
-            this.parameter = new MySqlParameter(parameterName: this.Column, value: data);
+        public DbMySqlParameter() 
+        { this.parameter = new MySqlParameter(); }
+
+        public DbMySqlParameter(string column)
+        { this.parameter = new MySqlParameter(column, null); }
+
+        public DbMySqlParameter(string column, object value)
+        { this.parameter = new MySqlParameter(column, value); }
+        
+        public DbMySqlParameter AddColumn(string column)
+        {
+            this.parameter.ParameterName = column;
+            return this;
+        }
+
+        public DbMySqlParameter AddValue(string column)
+        {
+            this.parameter.Value = column;
+            return this;
         }
 
         public MySqlParameter Get()
         {
-            this.SetDataType();
-            this.parameter.Value = this.Data;
-
             return this.parameter;
-        }
-
-        public void SetDataType ()
-        {
-            switch(DbMySqlDataType.Instance(this.Data).GetDataType())
-            {
-                case DbMySqlDataReaderType.String:   this.parameter.MySqlDbType = MySqlDbType.VarChar; break;
-                case DbMySqlDataReaderType.Char:     this.parameter.MySqlDbType = MySqlDbType.VarChar; break;
-                case DbMySqlDataReaderType.DateTime: this.parameter.MySqlDbType = MySqlDbType.DateTime; break;
-                case DbMySqlDataReaderType.Boolean:  this.parameter.MySqlDbType = MySqlDbType.Bit;  break;
-                case DbMySqlDataReaderType.Decimal:  this.parameter.MySqlDbType = MySqlDbType.Decimal; break;
-                case DbMySqlDataReaderType.Long:     this.parameter.MySqlDbType = MySqlDbType.Int64; break;
-                case DbMySqlDataReaderType.Int:      this.parameter.MySqlDbType = MySqlDbType.Int32;  break;
-            }
         }
     }
 }

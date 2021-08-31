@@ -5,15 +5,13 @@ VisualStudioVersion = 16.0.31605.320
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecorteDeCoracao", "RecorteDeCoracao.csproj", "{B88752C0-2D54-4DFF-B398-E339AED895F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbMySqlConnection", "DbMySqlConnection\DbMySqlConnection.csproj", "{695A62C3-E03F-4BAF-8798-37F5B2A14FC2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DbMySqlConnection", "DbMySqlConnection\DbMySqlConnection.csproj", "{695A62C3-E03F-4BAF-8798-37F5B2A14FC2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbModel", "DbModel\DbModel.csproj", "{CE788010-9283-4A07-A403-2514A7796D1B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DbModel", "DbModel\DbModel.csproj", "{CE788010-9283-4A07-A403-2514A7796D1B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbInterface", "DbInterface\DbInterface.csproj", "{7FFC2B7D-D1EC-46C8-82A0-C87A20147987}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service", "Service\Service.csproj", "{B5F53417-2C84-4660-854A-E82AE20B0BC3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.csproj", "{B5F53417-2C84-4660-854A-E82AE20B0BC3}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controller", "Controller\Controller.csproj", "{2CC6F40E-5FBC-4F82-ABF6-1B3EF160FE27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Controller", "Controller\Controller.csproj", "{2CC6F40E-5FBC-4F82-ABF6-1B3EF160FE27}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,10 +31,6 @@ Global
 		{CE788010-9283-4A07-A403-2514A7796D1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE788010-9283-4A07-A403-2514A7796D1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE788010-9283-4A07-A403-2514A7796D1B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7FFC2B7D-D1EC-46C8-82A0-C87A20147987}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7FFC2B7D-D1EC-46C8-82A0-C87A20147987}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7FFC2B7D-D1EC-46C8-82A0-C87A20147987}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7FFC2B7D-D1EC-46C8-82A0-C87A20147987}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B5F53417-2C84-4660-854A-E82AE20B0BC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B5F53417-2C84-4660-854A-E82AE20B0BC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B5F53417-2C84-4660-854A-E82AE20B0BC3}.Release|Any CPU.ActiveCfg = Release|Any CPU

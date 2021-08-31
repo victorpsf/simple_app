@@ -49,4 +49,8 @@
     <Reference Include="System.Data.SqlXml" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Query\" />
+  </ItemGroup>
+
 </Project>
