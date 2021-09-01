@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RecorteDeCoracao.View
+namespace RecorteDeCoracao.ViewInterface
 {
-    interface ViewInterface
+    interface IViewInterface
     {
         void Build();
         void ParentEstateData(object value);

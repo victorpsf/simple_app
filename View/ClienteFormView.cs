@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using RecorteDeCoracao.ViewInterface;
+
 namespace RecorteDeCoracao.View
 {
-    public partial class ClienteFormView : Form, ViewInterface
+    public partial class ClienteFormView : Form, IViewInterface
     {
-        public ClienteFormView()
+        private ClienteDataView clienteDataView;
+
+        public ClienteFormView(ClienteDataView clienteDataView, params object[] parameters)
         {
             InitializeComponent();
+            this.clienteDataView = clienteDataView;
         }
 
         public void Build () { }
@@ -26,5 +31,10 @@ namespace RecorteDeCoracao.View
         // sem utilidade neste view
         public void ChildrenEstateData(object value)
         { }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.clienteDataView.ChangeFormPanelToViewPanel();
+        }
     }
 }

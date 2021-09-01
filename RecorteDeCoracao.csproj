@@ -80,8 +80,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Delegates\Events.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewController\ClienteDataViewController.cs" />
     <Compile Include="View\ClienteFormView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +96,7 @@
     <Compile Include="View\ClienteDataView.Designer.cs">
       <DependentUpon>ClienteDataView.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewInterface\IViewData.cs" />
     <Compile Include="View\MainView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,7 +127,7 @@
     <Compile Include="View\ProdutoFormView.Designer.cs">
       <DependentUpon>ProdutoFormView.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\ViewInterface.cs" />
+    <Compile Include="ViewInterface\IViewInterface.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

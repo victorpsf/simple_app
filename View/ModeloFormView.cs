@@ -8,9 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using RecorteDeCoracao.ViewInterface;
+
 namespace RecorteDeCoracao.View
 {
-    public partial class ModeloFormView : Form, ViewInterface
+    public partial class ModeloFormView : Form, IViewInterface
     {
         public ModeloFormView()
         {

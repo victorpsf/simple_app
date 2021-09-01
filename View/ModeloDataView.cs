@@ -8,9 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using RecorteDeCoracao.ViewInterface;
+
 namespace RecorteDeCoracao.View
 {
-    public partial class ModeloDataView : Form, ViewInterface
+    public partial class ModeloDataView : Form, IViewInterface, IViewData
     {
         public ModeloDataView()
         {
@@ -26,5 +28,12 @@ namespace RecorteDeCoracao.View
         // obter instancia de Modelo
         public void ChildrenEstateData(object value)
         { }
+
+        public void ButtonViewClick(string type, object sender, EventArgs e, object value, object controller)
+        { }
+
+        public void ChangeViewPanelToFormPanel(params object[] parameters) { }
+
+        public void ChangeFormPanelToViewPanel(params object[] parameters) { }
     }
 }
