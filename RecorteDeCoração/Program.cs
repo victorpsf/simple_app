@@ -29,7 +29,7 @@ namespace RecorteDeCoração
 
         static void Init() {
             try { 
-                Application.Run(new MainForm());
+                Application.Run(new MainMenuForm());
             }
 
             catch (Exception error) {

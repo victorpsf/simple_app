@@ -5,7 +5,7 @@ using System.Diagnostics;
 
 namespace RecorteDeCoração.Connection
 {
-    class DbConfiguration
+    public class DbConfiguration
     {
         public string host = "127.0.0.1";
         public string port = "3306";

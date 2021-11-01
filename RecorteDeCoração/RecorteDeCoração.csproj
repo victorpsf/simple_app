@@ -84,112 +84,65 @@
   <ItemGroup>
     <Compile Include="Connection\DbConfiguration.cs" />
     <Compile Include="Connection\DbConnection.cs" />
-    <Compile Include="Controller\ArquivoController.cs" />
-    <Compile Include="Controller\FinanceiroController.cs" />
-    <Compile Include="Controller\PedidoController.cs" />
-    <Compile Include="Controller\ProdutoPedidoController.cs" />
-    <Compile Include="Controller\View\ArquivoViewCreator.cs" />
-    <Compile Include="Forms\ArquivoForm.cs">
+    <Compile Include="DataBase\Client\Command\ClientCommandDto.cs" />
+    <Compile Include="DataBase\Client\Command\ClientCommandSql.cs" />
+    <Compile Include="DataBase\Client\Query\ClientQueryDto.cs" />
+    <Compile Include="DataBase\Client\Query\ClientQuerySql.cs" />
+    <Compile Include="Forms\ClienteForms\ClientCreateForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ArquivoForm.Designer.cs">
-      <DependentUpon>ArquivoForm.cs</DependentUpon>
+    <Compile Include="Forms\ClienteForms\ClientCreateForm.Designer.cs">
+      <DependentUpon>ClientCreateForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ClienteForm.cs">
+    <Compile Include="Forms\ClienteForms\ClienteViewForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ClienteForm.Designer.cs">
-      <DependentUpon>ClienteForm.cs</DependentUpon>
+    <Compile Include="Forms\ClienteForms\ClienteViewForm.Designer.cs">
+      <DependentUpon>ClienteViewForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FinanceiroForm.cs">
+    <Compile Include="Forms\Creator\ClientViewFormCreator.cs" />
+    <Compile Include="Forms\Interfaces\IForm.cs" />
+    <Compile Include="Forms\Interfaces\IPaternForm.cs" />
+    <Compile Include="Forms\MainMenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FinanceiroForm.Designer.cs">
-      <DependentUpon>FinanceiroForm.cs</DependentUpon>
+    <Compile Include="Forms\MainMenuForm.Designer.cs">
+      <DependentUpon>MainMenuForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\LogoForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\LogoForm.Designer.cs">
-      <DependentUpon>LogoForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\MainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\PedidoForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\PedidoForm.Designer.cs">
-      <DependentUpon>PedidoForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\PedidoForms\PedidoClienteForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\PedidoForms\PedidoClienteForm.cs" />
     <Compile Include="Forms\PedidoForms\PedidoClienteForm.Designer.cs">
       <DependentUpon>PedidoClienteForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\PedidoForms\PedidoFormForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\PedidoForms\PedidoFormForm.cs" />
     <Compile Include="Forms\PedidoForms\PedidoFormForm.Designer.cs">
       <DependentUpon>PedidoFormForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\PedidoForms\ProdutoPedidoForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\PedidoForms\ProdutoPedidoForm.cs" />
     <Compile Include="Forms\PedidoForms\ProdutoPedidoForm.Designer.cs">
       <DependentUpon>ProdutoPedidoForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\PedidoForms\RemoveProdutoPedidoForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\PedidoForms\RemoveProdutoPedidoForm.cs" />
     <Compile Include="Forms\PedidoForms\RemoveProdutoPedidoForm.Designer.cs">
       <DependentUpon>RemoveProdutoPedidoForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ProdutoForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\ProdutoForm.Designer.cs">
-      <DependentUpon>ProdutoForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Interfaces\ArquivoInfo.cs" />
-    <Compile Include="Interfaces\DefaultForm.cs" />
-    <Compile Include="Interfaces\PedidoFilter.cs" />
-    <Compile Include="Model\Financeiro.cs" />
-    <Compile Include="Model\Pedido.cs" />
-    <Compile Include="Model\ProdutoPedido.cs" />
-    <Compile Include="Model\StatusFinanceiro.cs" />
-    <Compile Include="Model\StatusPedido.cs" />
+    <Compile Include="ModelDto\FileDto.cs" />
+    <Compile Include="ModelDto\ModelDto.cs" />
+    <Compile Include="ModelDto\PersonTypes.cs" />
+    <Compile Include="ModelDto\PersonDto.cs" />
+    <Compile Include="ModelDto\ProductDto.cs" />
     <Compile Include="Source\FileController.cs" />
     <Compile Include="Source\LogController.cs" />
-    <Compile Include="Model\Arquivo.cs" />
-    <Compile Include="Controller\ClienteController.cs" />
-    <Compile Include="Controller\ProdutoController.cs" />
-    <Compile Include="Model\Cliente.cs" />
-    <Compile Include="Model\Produto.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Source\UtilController.cs" />
-    <EmbeddedResource Include="Forms\ArquivoForm.resx">
-      <DependentUpon>ArquivoForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\ClienteForms\ClientCreateForm.resx">
+      <DependentUpon>ClientCreateForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ClienteForm.resx">
-      <DependentUpon>ClienteForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\ClienteForms\ClienteViewForm.resx">
+      <DependentUpon>ClienteViewForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FinanceiroForm.resx">
-      <DependentUpon>FinanceiroForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\LogoForm.resx">
-      <DependentUpon>LogoForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\PedidoForm.resx">
-      <DependentUpon>PedidoForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\MainMenuForm.resx">
+      <DependentUpon>MainMenuForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PedidoForms\PedidoClienteForm.resx">
       <DependentUpon>PedidoClienteForm.cs</DependentUpon>
@@ -202,9 +155,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PedidoForms\RemoveProdutoPedidoForm.resx">
       <DependentUpon>RemoveProdutoPedidoForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ProdutoForm.resx">
-      <DependentUpon>ProdutoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -325,7 +275,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="RecorteDeCoracaoLogo.ico" />
+    <None Include="Resources\arrow-down.jpeg" />
+    <None Include="Resources\arrow-up.jpeg" />
     <None Include="Resources\file-download.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Filter\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

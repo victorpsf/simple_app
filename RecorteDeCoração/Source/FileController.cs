@@ -13,8 +13,6 @@ using RecorteDeCoração.Source;
 using RecorteDeCoração.Forms;
 
 
-using RecorteDeCoração.Interfaces;
-
 namespace RecorteDeCoração.Source
 {
     class FileController
@@ -120,10 +118,10 @@ namespace RecorteDeCoração.Source
         /// </summary>
         /// <param name="path"></param>
         /// <returns>vetor de string com 3 posições</returns>
-        public static ArquivoInfo FileInfo(string path)
-        {
-            return new ArquivoInfo(path);
-        }
+        // public static ArquivoInfo FileInfo(string path)
+        // {
+        //     return new ArquivoInfo(path);
+        // }
 
         /// <summary>
         ///     retorna binario da imagem.
